@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+.columna {
+  float: left;
+  width: 33.33%;
+  padding-right: 5px;
+}
+.columna2 {
+    position: absolute;
+    top: 200px;
+    left: 1500px;
+}
+
+
+.fila::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.fila img{
+    width: 680px;
+    height: 500px;
+}
+.filaUlt{
+    text-align: center;
+    outline: none;
+        }
+.texto::after{
+    float: right;
+    
+}
+.Button_green {
+/*	background-color:rgba(115, 189, 202, 0.863);*/
+    background-color:white;
+	border:2px solid white;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+} 
+.Button_green:hover {
+	background-color:rgba(28, 92, 104, 0.863);
+    color: white;
+}
+.Button_green:active {
+	position:relative;
+	top:1px;
+    border:2px solid black;
+}
+        .botones{
+	background-color:rgba(115, 189, 202, 0.863);
+	border:2px solid rgba(115, 189, 202, 0.863);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+    width: 300px;
+    height: 75px;
+    text-align: center
+}
+.botones:hover{
+    background-color:rgba(28, 92, 104, 0.863);
+    border:2px solid rgba(28, 92, 104, 0.863);
+}
+.botones:active{
+    position:relative;
+    top:1px;
+}
+          .botones2{
+	background-color:white;
+	border:2px solid rgba(165, 165, 165,0.829 );
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+    width: 300px;
+    height: 75px;
+    text-align: center
+}
+.botones2:hover{
+    background-color:rgba(28, 92, 104, 0.863);
+    border:2px solid rgba(28, 92, 104, 0.863);
+    color: white;
+}
+.botones2:active{
+    position:relative;
+    top:1px;
+}      
+.envio{
+    position: absolute;
+    top:1150px;
+    left: 600px;
+}
+.infoEnv{
+    width: 500px;
+    position: absolute;
+    top: 1170px;
+    left:650px;
+    text-align: justify;
+}
+.detalles{
+    outline: none;
+}
+.vinculos{
+     color: black;
+}
+.textJust{
+    text-align: justify;
+}
+        
+    </style>
+</head>
+<body>
+<main>
+    <div class="fila"> <!-- div ajax INFORMACION PROD TOTAL -->
+        
+        <div class="columna"> <!-- div ajaxfotos -->
+            <img src="https://picsum.photos/800/600">
+        </div> <!-- div ajaxfotos -->
+        
+        
+        <div class="columna"> <!-- div ajaxfotos -->
+            <img src="https://picsum.photos/800/600">
+        </div> <!-- div ajaxfotos -->
+        
+        
+        <div class="columna2"> <!-- div ajax infoProd -->
+            
+            <div> <!-- div ajax info -->
+            <h1>Articulo Selecionado</h1>
+            <div class="info">
+            <p>Nombre</p>
+            <p>Precio</p>
+            <p>Descripción</p>
+            </div>
+            </div> <!-- div ajax info -->
+            
+            
+            <div><!-- div ajax links -->
+                <p><a href="#informacion" class="vinculos">Mas información</a></p>
+                <p><a href="#infoEnv" class="vinculos">Envíos</a></p>
+            </div> <!-- div ajax links -->
+            
+            
+            <div> <!-- div ajax info tallas -->
+                <span class="Button_green" value="S">S</span>
+                <span class="Button_green" value="M">M</span>
+                <span class="Button_green" value="L">L</span>
+                <span class="Button_green" value="XL">XL</span>
+            <br>
+            </div> <!-- div ajax info tallas -->
+            
+            
+            <div> <!-- div ajax botones carrito fav -->
+            <div >
+                <a class="botones">Añadir al carrito</a>
+            </div>
+            <br>
+            <div>
+                <a class="botones2">Favoritos<span class="icon-heart"></span></a>
+            </div>
+                </div> <!-- div ajax botones carrito fav -->
+            
+        </div> <!-- div ajax infoProd -->
+        
+    </div> <!-- div ajax INFORMACION PROD TOTAL -->
+    
+    <div class="fila"> <!-- div ajax conjunto fotos -->
+        
+        <div class="columna"> <!-- div ajaxfotos -->
+            <img src="https://picsum.photos/800/600">
+        </div><!-- div ajaxfotos -->
+        
+        
+        <div class="columna"> <!-- div ajaxfotos -->
+            <img src="https://picsum.photos/800/600">
+        </div><!-- div ajaxfotos -->
+        
+    <br>
+    </div> <!-- div ajax conjunto fotos -->
+    
+    <div class="filaUlt"> <!-- div ajax DETAILS TOTAL -->
+        
+        <div> <!-- div ajax details Descripcion -->
+        <details open class="detalles" >
+            <summary>Descripción</summary>
+            <div> <!-- div ajax descripcion -->
+            <p><a name="informacion">Camiseta asdasfasdfasdfdasdfdasfasfasdfafasfasdsdsdsdsdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddd</a></p>
+                </div>
+        </details>
+        <br>
+        </div><!-- div ajax details Descripcion -->
+        
+        
+        <div> <!-- div ajax details Envio -->
+        <details open class="detalles">
+            <summary>Envíos y devoluciones</summary>
+            
+            
+            <div> <!-- div ajax informacion Paises -->
+        <p>
+            <select class="envio">
+                 <option>España</option>
+                 <option>Italia</option>
+                 <option>Reino Unido</option>
+                 <option>Alemania</option>
+                 <option>Estados Unidos</option>
+                 <option>China</option>
+                 <option>Rusia</option>
+                 <option>Japón</option>
+                 <option>Brasil</option>
+                 <option>Argentina</option>
+                 <option>Canada</option>
+                 <option>Bélgica</option>
+                 <option>Bahamas</option>
+                 <option>México</option>
+                 <option>Francia</option>
+            </select>
+        </p>
+            </div> <!-- div ajax informacion Paises -->
+            
+            
+            <div class="infoEnv" > <!-- div ajax informacion Envio -->
+                <a name="infoEnv">Envios gratis con GLS, con la fecha de entrega estimada en el artículo</a>
+                <ul>
+                  <li><a>Gratis para pedidos de 50€ o más</a></li>
+                  <li><a>3€ para pedidos inferiores a 50€</a></li>
+                  <li><a>5€ para pedidos con envío Express</a></li> 
+                </ul>
+                <a class="textJust">Tienes 14 días para hacer devoluciones desde que recibes el producto. Ampliación del plazo de devolución durante el periodo de fiestas: Todos los pedidos realizados entre el 9 de diciembre de 2020 y el 5 de enero de 2021 podrán devolverse hasta el 19 de enero de 2021. </a>
+                </div> <!-- div ajax informacion Envio -->
+            
+            
+            </details>
+            </div> <!-- div ajax details Envio -->
+    </div> <!-- div ajax DETAILS TOTAL -->
+    </main>
+</body>
+</html>
