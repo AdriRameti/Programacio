@@ -127,18 +127,18 @@ header .catego_List a.activo {
 }
 /*********************************************************************/
 /**************************DETAILS************************************/
-* {
+/* * {
 	box-sizing: border-box;
-  }
-  
+  } */
+
   .columna {
 	float: left;
-	width: 50%;
-	padding-right: 5px;
+	/* width: 50%;
+	padding-right: 0px; */
   }
   .columna2 {
 	  position: absolute;
-	  top: 200px;
+	  top: 50px;
 	  left: 1300px;
   }
   
@@ -149,8 +149,8 @@ header .catego_List a.activo {
 	display: table;
   }
   .fila img{
-	  width: 680px;
-	  height: 500px;
+	  width: 600px;
+	  height: 400px;
   }
   .filaUlt{
 	  text-align: center;
@@ -231,14 +231,14 @@ header .catego_List a.activo {
   }      
   .envio{
 	  position: absolute;
-	  top:1150px;
-	  left: 600px;
+	  top:950px;
+	  left: 550px;
   }
   .infoEnv{
-	  width: 500px;
+	  width: 600px;
 	  position: absolute;
-	  top: 1170px;
-	  left:650px;
+	  top: 1020px;
+	  left:550px;
 	  text-align: justify;
   }
   .detalles{
@@ -266,7 +266,7 @@ header .catego_List a.activo {
 	position: relative;
 	display: block;
 	padding: 0;
-	margin: 10px;
+	margin: 0;
 	width: calc(33.333333% -20px);
 
 }
@@ -289,7 +289,7 @@ header .catego_List a.activo {
 	margin-left:20px;
 }
 #listS{
-	margin-left:20px;
+	margin-left:0;
 }
 /**********************************************************************/
 /********************BOTONES LIST CRUD ********************************/

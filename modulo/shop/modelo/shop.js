@@ -149,10 +149,10 @@ console.log(codigo);
                     $('<div></div>').attr('class','intro2').appendTo('.precontenido3');
                         //Información Intro2
                         $('<p></p>').attr('class','parraf1').appendTo('.intro2');
-                            $('<a></a>').attr('href','informacion').attr('class','vinculos').appendTo('.parraf1');
+                            $('<a>Más información</a>').attr('href','#informacion').attr('class','vinculos').appendTo('.parraf1');
 
                         $('<p></p>').attr('class','parraf2').appendTo('.intro2');
-                            $('<a></a>').attr('href','infoEnv').attr('class','vinculos').appendTo('.parraf2');
+                            $('<a>Envio</a>').attr('href','#infoEnv').attr('class','vinculos').appendTo('.parraf2');
                         //END Información Intro2
 
                     $('<div></div>').attr('class','intro3').appendTo('.precontenido3');
@@ -170,7 +170,7 @@ console.log(codigo);
 
                         $('<br></br>').appendTo('.intro4');
                         $('<div></div>').attr('class','botonesShop1').appendTo('.intro4');
-                            $('<a>Favoritos</a>').attr('class','botones').appendTo('.botonesShop1');
+                            $('<a>Favoritos</a>').attr('class','botones2').appendTo('.botonesShop1');
                         //ENDInformación Intro4
                     //ENDContenido Tercera Columna
                     //END Tercera Columna Fila1
@@ -179,8 +179,8 @@ console.log(codigo);
                 //Segunda fila
                 $('<div></div>').attr('class','fila cabecera2').appendTo('#Div3');
                     //Primera Columna Fila2
-                    $('<div></div>').attr('class','columna precontenido3').appendTo('.cabecera2');
-                        $('<img></img>').attr('src','https://picsum.photos/800/600').appendTo('.precontenido3');
+                    $('<div></div>').attr('class','columna precontenido9').appendTo('.cabecera2');
+                        $('<img></img>').attr('src','https://picsum.photos/800/600').appendTo('.precontenido9');
                     //END Primera Columna Fila2
 
                      //Segunda Columna Fila2
@@ -198,7 +198,7 @@ console.log(codigo);
                     $('<div></div>').attr('class','precontenido5').appendTo('.cabecera3');
 
                         //Información Seccion Descripcion
-                        $('<details></details>').attr('open').attr('class','detalles detallesShop').appendTo('.precontenido5');
+                        $('<details></details>').attr('open','').attr('class','detalles detallesShop').appendTo('.precontenido5');
 
                             //Información Details
                             $('<summary>Descripción</summary>').appendTo('.detallesShop');
@@ -213,7 +213,7 @@ console.log(codigo);
 
                     //Seccion Envio
                     $('<div></div>').attr('class','precontenido6').appendTo('.cabecera3');
-                    $('<details></details>').attr('open').attr('class','detalles detallesShop1').appendTo('.precontenido6');
+                    $('<details></details>').attr('open','').attr('class','detalles detallesShop1').appendTo('.precontenido6');
 
                         //Información Seccion Descripcion
                         $('<summary>Envíos y devoluciones</summary>').appendTo('.detallesShop1');
@@ -228,7 +228,7 @@ console.log(codigo);
                                     $('<option>Alemania</option>').appendTo('.paises3');
                                     $('<option>Estados Unidos</option>').appendTo('.paises3');
                                     $('<option>China</option>').appendTo('.paises3');
-                                    $('<option></option>').appendTo('.paises3');
+                                    $('<option>Paises Bajos</option>').appendTo('.paises3');
                                     $('<option>Rusia</option>').appendTo('.paises3');
                                     $('<option>Japón</option>').appendTo('.paises3');
                                     $('<option>Brasil</option>').appendTo('.paises3');
