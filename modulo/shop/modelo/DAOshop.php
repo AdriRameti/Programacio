@@ -3,7 +3,7 @@ $path=$_SERVER['DOCUMENT_ROOT']  ."/Ejercicios_PHP";
 include ($path ."/modelo/connect.php");
 class DAOshop{
 function show_details($codigo){
-        $sql = "SELECT nombre FROM ropa WHERE codigo=$codigo"; 
+        $sql = "SELECT r.marca,r.descripcion,r.precio,d.talla1,d.talla2,d.talla3,d.talla4,d.descriptotal,i.img1,i.img2,i.img3,i.img4 FROM imagenes i INNER JOIN ropa r INNER JOIN details d where i.codigo=$codigo AND d.codigo=$codigo AND r.codigo=$codigo AND i.codigo=r.codigo AND i.codigo=d.codigo AND r.codigo=d.codigo"; 
         
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -11,7 +11,7 @@ function show_details($codigo){
         return $res;
 }
 function select_Tshirts(){
-        $sql = "SELECT codigo,nombre,marca,img FROM ropa WHERE nombre='Camiseta'"; //añadir preu
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Camiseta'"; //añadir preu
         
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -20,7 +20,7 @@ function select_Tshirts(){
     }
 
     function select_Hoodies(){
-        $sql = "SELECT nombre,marca,img FROM ropa WHERE nombre='Sudadera'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Sudadera'";
         
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -28,7 +28,7 @@ function select_Tshirts(){
         return $res;
     }
     function select_Jeans(){
-        $sql = "SELECT nombre,marca,img FROM ropa WHERE nombre='Vaqueros'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Vaqueros'";
         
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -36,7 +36,7 @@ function select_Tshirts(){
         return $res;
     }
     function select_Pants(){
-        $sql = "SELECT nombre,marca,img FROM ropa WHERE nombre='Pantalon'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Pantalon'";
         
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -44,7 +44,7 @@ function select_Tshirts(){
         return $res;
     }
     function select_Jacket(){
-        $sql = "SELECT nombre,marca,img FROM ropa WHERE nombre='Chaqueta'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Chaqueta'";
         
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -52,7 +52,7 @@ function select_Tshirts(){
         return $res;
         }
     function select_Shirt(){
-        $sql = "SELECT nombre,marca,img FROM ropa WHERE nombre='Camisa'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Camisa'";
             
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -60,7 +60,7 @@ function select_Tshirts(){
         return $res;
         }
     function select_Sneakers(){
-        $sql = "SELECT nombre,marca,img FROM sneakers WHERE nombre='Sneakers'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM sneakers WHERE nombre='Sneakers'";
             
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
@@ -68,7 +68,7 @@ function select_Tshirts(){
         return $res;
         }
     function select_Formal(){
-        $sql = "SELECT nombre,marca,img FROM sneakers WHERE nombre='Formal'";
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM sneakers WHERE nombre='Formal'";
                 
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);

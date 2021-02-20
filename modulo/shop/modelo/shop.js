@@ -88,12 +88,13 @@ function cat_shop(){
             x=0;
         for (row in data){
             //CONTENIDO
+            console.log(data);
             $('<span></span>').attr('class','items sup'+x).appendTo('#Div3');
             $('<span></span>').attr('class','item-contenido suport'+x).appendTo('.sup'+x);
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
             $('<img></img>').attr('id',''+data[row].codigo+'').attr('class','details defin'+x).attr('src',''+data[row].img+'').attr('alt','').appendTo('.link'+x);
             $('<div>'+data[row].nombre+'</div>').attr('class','preu'+x).appendTo('.sup'+x);
-            // $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
+            $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
                 x++;
         }
     })
@@ -111,20 +112,21 @@ console.log(codigo);
             console.log("error details");
         },
         success:(function(data){
+            console.log(data);
             $('#Div3').empty();
             $('#DivHead').empty();
-            for (row in data){
+            // for (row in data){
                 //Primera fila
                 $('<div></div>').attr('class','fila cabecera1').appendTo('#Div3');
 
                     //Primera Columna Fila1
                     $('<div></div>').attr('class','columna precontenido1').appendTo('.cabecera1');
-                    $('<img></img>').attr('src','https://picsum.photos/800/600').appendTo('.precontenido1');
+                    $('<img></img>').attr('src',''+data[0].img1+'').appendTo('.precontenido1');
                     //END Primera Columna Fila1
 
                      //Segunda Columna Fila1
                     $('<div></div>').attr('class','columna precontenido2').appendTo('.cabecera1');
-                    $('<img></img>').attr('src','https://picsum.photos/800/600').appendTo('.precontenido2');
+                    $('<img></img>').attr('src',''+data[0].img2+'').appendTo('.precontenido2');
                     //END Segunda Columna Fila1
                     
                     //Tercera Columna Fila1
@@ -136,12 +138,13 @@ console.log(codigo);
                         //Informacion Intro1
                         $('<div></div>').attr('class','contenido1').appendTo('.intro1');
                             //Contenido
-                            $('<h1>Artículo Seleccionado</h1>').appendTo('.contenido1');
+                            $('<h1>'+data[0].marca+'</h1>').appendTo('.contenido1');
                             $('<div></div>').attr('class','info contenidoE1').appendTo('.contenido1');
                                 //ContenidoE
-                                $('<p>Nombre</p>').appendTo('.contenidoE1');
-                                $('<p>Precio</p>').appendTo('.contenidoE1');
-                                $('<p>Descripción</p>').appendTo('.contenidoE1');
+                                // $('<p>Nombre</p>').appendTo('.contenidoE1');
+                                $('<p>'+data[0].descripcion+'</p>').appendTo('.contenidoE1');
+                                $('<p>'+data[0].precio+'</p>').appendTo('.contenidoE1');
+                                
                                 //END Contenido E
                             //END Contenido
                         //END Informacion Intro1
@@ -157,10 +160,10 @@ console.log(codigo);
 
                     $('<div></div>').attr('class','intro3').appendTo('.precontenido3');
                         //Información Intro3
-                        $('<span>S</span>').attr('class','Button_green2').attr('value','S').appendTo('.intro3');
-                        $('<span>M</span>').attr('class','Button_green2').attr('value','M').appendTo('.intro3');
-                        $('<span>L</span>').attr('class','Button_green2').attr('value','L').appendTo('.intro3');
-                        $('<span>XL</span>').attr('class','Button_green2').attr('value','XL').appendTo('.intro3');
+                        $('<span>'+data[0].talla1+'</span>').attr('class','Button_green2').attr('value','S').appendTo('.intro3');
+                        $('<span>'+data[0].talla2+'</span>').attr('class','Button_green2').attr('value','M').appendTo('.intro3');
+                        $('<span>'+data[0].talla3+'</span>').attr('class','Button_green2').attr('value','L').appendTo('.intro3');
+                        $('<span>'+data[0].talla4+'</span>').attr('class','Button_green2').attr('value','XL').appendTo('.intro3');
                         //END Información Intro3
 
                     $('<div></div>').attr('class','intro4').appendTo('.precontenido3');
@@ -180,12 +183,12 @@ console.log(codigo);
                 $('<div></div>').attr('class','fila cabecera2').appendTo('#Div3');
                     //Primera Columna Fila2
                     $('<div></div>').attr('class','columna precontenido9').appendTo('.cabecera2');
-                        $('<img></img>').attr('src','https://picsum.photos/800/600').appendTo('.precontenido9');
+                        $('<img></img>').attr('src',''+data[0].img3+'').appendTo('.precontenido9');
                     //END Primera Columna Fila2
 
                      //Segunda Columna Fila2
                     $('<div></div>').attr('class','columna precontenido4').appendTo('.cabecera2');
-                        $('<img></img>').attr('src','https://picsum.photos/800/600').appendTo('.precontenido4'); 
+                        $('<img></img>').attr('src',''+data[0].img4+'').appendTo('.precontenido4'); 
                     //END Segunda Columna Fila2
 
                     $('<br></br>').appendTo('.cabecera2');
@@ -204,7 +207,7 @@ console.log(codigo);
                             $('<summary>Descripción</summary>').appendTo('.detallesShop');
                             $('<div></div>').attr('class','divDet').appendTo('.detallesShop');
                                 $('<p></p>').attr('class','linques').appendTo('.divDet');
-                                    $('<a>Aquí ira la descripcion del artículo</a>').attr('name','informacion').appendTo('.linques');
+                                    $('<a>'+data[0].descriptotal+'</a>').attr('name','informacion').appendTo('.linques');
                             //END Información Details
 
                         $('<br></br>').appendTo('.precontenido5');
@@ -252,7 +255,7 @@ console.log(codigo);
                         //ENDInformación Seccion Descripcion
                     //END Seccion Envio
                 //END Tercera fila
-            }
+            // }
         })
     });
 });
