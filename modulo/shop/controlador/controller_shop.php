@@ -238,17 +238,54 @@ switch ($_GET['op']){
               if(!$rdo){
                 echo json_encode("Error");
                 exit;
-        
             }else{
                 $arry=array();
-    
                 foreach ($rdo as $value) {
                     array_push($arry, $value);
                 }
-    
                 echo json_encode($arry);
-        
-                
             }
+            break;
+        case "filters":
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->filters($_GET['filterArray']);
+            }catch (Exception $e){
+                echo json_encode("error");
+                      exit;
+            }
+            if(!$rdo){
+                echo json_encode("Error");
+                    exit;
+            }else{
+                $arry=array();
+                foreach ($rdo as $value) {
+                    array_push($arry, $value);
+                }
+                echo json_encode($arry);
+            }
+                break;
+        case "search":
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->filters($_GET['filterArray']);
+            }catch (Exception $e){
+                echo json_encode("error");
+                exit;
+            }
+            if(!$rdo){
+                echo json_encode("Error");
+                exit;
+            }else{
+                $arry=array();
+                foreach ($rdo as $value) {
+                    array_push($arry, $value);
+                }
+                echo json_encode($arry);
+                }
+        break;
+        case "views":
+            $daoshop = new DAOshop();
+            $rdo = $daoshop->views_up($_GET['codigo']);
             break;
 }

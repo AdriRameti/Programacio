@@ -31,13 +31,6 @@ function validatejs() {
 	}else if(document.clothesforms.nombre.value.length!=0){
 		document.getElementById('e_nombre').innerHTML = "";
 	}
-    // if (correcto==0){
-	//     document.getElementById('e_marca').innerHTML = "Tiene que elegir una marca";
-	// 	document.clothesforms.marca.focus();
-	// 	return 0;
-	// }else if(correcto!=0){
-	// 	document.getElementById('e_marca').innerHTML = "";
-	// }
 	if (document.clothesforms.fechaEnv.value.length==0){
 	    document.getElementById('e_fecha').innerHTML = "Tiene que elegir una fecha";
 		document.clothesforms.fechaEnv.focus();
