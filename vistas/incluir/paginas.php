@@ -7,6 +7,9 @@ if (isset($_GET['page'])){
 		case "list_shop":
 			include("modulo/shop/vista/".$_GET['page'].".html");
 			break;
+		// case "shop":
+		// 	include("modulo/shop/vista/".$_GET['page'].".html");
+		// 	break;
 		case "opciones":
 			include("vistas/incluir/opciones/".$_GET['page'].".html");
 			break;

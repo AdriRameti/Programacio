@@ -9,6 +9,98 @@
 	margin:auto;
 }
 /*********************************************************************/
+/********Filtros**************************************************/
+.activo{
+	position: absolute;
+	left: 450px;
+	top: 380px;
+}
+.contenedor-filter{
+	width:90%;
+	max-width: 400px;
+	margin: 0 20px;
+	background:  rgba(255, 255, 255, 0.213);
+}
+.formulario h2{
+	font-size: 16px;
+	color: teal;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.formulario > div{
+	padding: 20px 0;
+	border-bottom: 1px solid #ccc;
+}
+.formulario input[type="checkbox"]{
+	display: none;
+}
+.formulario .marca label,
+.formulario .talla label{
+	color: #0774D9;
+	padding: 5px 15px 5px 48px;
+	display: inline-block;
+	position: relative;
+	font-size: 1em;
+	border-radius: 3px;
+	cursor:pointer;
+	-webkit-transition:all 0.3s ease ;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.formulario .marca label:before,
+.formulario .talla label:before{
+	content:"";
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	background: none;
+	border: 3px solid #0774D9;
+	position: absolute;
+	left: 14px;
+	top:3px;
+}
+.formulario .marca label:hover,
+.formulario .talla label:hover{
+	
+	background: rgba(0,116,217,0.2);
+}
+.formulario input[type="checkbox"]:checked + label{
+	padding: 5px 15px 5px;
+	background: #0774D9;
+	border-radius: 2px;
+	color:#fff;
+}
+.formulario input[type="checkbox"]:checked + label:before{
+	display: none;
+}
+.botones3{
+    
+	background-color:white;
+	border:2px solid rgba(165, 165, 165,0.829 );
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:17px;
+/*	  padding:16px 15px;*/
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	width: 75px;
+	height: 27px;
+	text-align: center
+}
+.botones3:hover{
+/*	  background-color:rgba(28, 92, 104, 0.753);*/
+	background-color: #0774D9;
+	border:2px solid rgba(28, 92, 104, 0.753);
+	color: white;
+	cursor: pointer;
+}
+.botones3:active{
+	position:relative;
+	top:1px;
+} 
+/*********************************************************************/
 /********ICONOS**************************************************/
 @font-face {
 	font-family: 'icomoon';
@@ -207,7 +299,7 @@ header .catego_List a.activo {
   }
 			.botones2{
 	  background-color:white;
-	  border:2px solid rgba(165, 165, 165,0.829 );
+	  border:2px solid rgba(165, 165, 165, 0.829);
 	  display:inline-block;
 	  cursor:pointer;
 	  color:black;
@@ -253,7 +345,9 @@ header .catego_List a.activo {
 /*********************************************************************/
 /*****************IMAGENES SHOP***************************************/
 .grid{
-	position: relative;
+	position: absolute;
+	top:400px;
+	left: 600px;
 	width: 100%;
 	opacity: 0;
 	transition: opacity 0.5s linear 1s;
@@ -262,7 +356,7 @@ header .catego_List a.activo {
 	opacity: 1;
 }
 .grid .items{
-	position: absolute;
+	/* position: absolute; */
 	position: relative;
 	display: block;
 	padding: 0;
@@ -288,9 +382,6 @@ header .catego_List a.activo {
 }
 #list_shop{
 	margin-left:20px;
-}
-#listS{
-	margin-left:0;
 }
 /**********************************************************************/
 /********************BOTONES LIST CRUD ********************************/

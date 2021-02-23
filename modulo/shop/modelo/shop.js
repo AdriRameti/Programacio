@@ -1,4 +1,7 @@
 
+var filtrado;
+var marcas;
+var tallas;
 function efectos_shop(){
     const grid = new Muuri('.grid',{
         layout: {
@@ -10,27 +13,38 @@ function efectos_shop(){
     });
 }
 function cat_shop(){
+    console.log("Entra shop");
     var nom=localStorage.getItem('nombre');
-    if (nom=="Tshirt"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Formal"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    } else if(nom=="Hoodies"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Sneakers"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Accesories"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Jeans"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Shirt"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Pants"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-    }else if(nom=="Jacket"){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+    var filtrado1 =sessionStorage.getItem('filtrado');
+    var marcas1=sessionStorage.getItem('marcas');
+    var tallas1=sessionStorage.getItem('tallas');
+    console.log(filtrado1);
+    if (filtrado1!=1){
+        console.log("Valgo0");
+        if (nom=="Tshirt"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Formal"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        } else if(nom=="Hoodies"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Sneakers"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Accesories"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Jeans"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Shirt"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Pants"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }else if(nom=="Jacket"){
+            var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
+        }
+    }else if (filtrado1==1){
+        console.log("Valgo1");
+        // var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&";
     }
-
+        
     $.ajax({
         type:'GET',
         dataType:'JSON',
@@ -39,7 +53,6 @@ function cat_shop(){
             console.log("error shop");
         },
     success:(function(data){
-
                     //HEADER 
             $('<header></header>').attr('class','head1').appendTo('#DivHead');
             $('<div></div>').attr('class','tituloL head2').appendTo('.head1');
@@ -48,52 +61,53 @@ function cat_shop(){
             $('<form></form>').attr('action','').attr('class','head3').appendTo('.head2');
             $('<input></input>').attr('type','text').attr('class','busqueda').attr('id','busqueda').attr('placeholder','Buscar').appendTo('.head3');
             $('<div></div>').attr('class','catego_List head4').attr('id','catego_List').appendTo('.head2');
-            $('<a>Todos</a>').attr('href','#').attr('class','activo').appendTo('.head4');
-            $('<select></select>').attr('class','head5').appendTo('.head4');
-            //opciones select
-            $('<option>Marca</option>').attr('hidden','').attr('selected','').appendTo('.head5');
-            $('<option>Nike</option>').attr('value','Nike').appendTo('.head5');
-            $('<option>Adidas</option>').attr('value','Adidas').appendTo('.head5');
-            $('<option>Carhartt</option>').attr('value','Carhartt').appendTo('.head5');
-            $('<option>Bape</option>').attr('value','Bape').appendTo('.head5');
-            $('<option>Supreme</option>').attr('value','Supreme').appendTo('.head5');
-            $('<option>Guess</option>').attr('class','filters').attr('value','Guess').appendTo('.head5');
-            $('<option>Obey</option>').attr('value','Obey').appendTo('.head5');
-            $('<option>The North Face</option>').attr('value','The North Face').appendTo('.head5');
-            $('<option>Polo Ralph Lauren</option>').attr('value','Polo Ralph Lauren').appendTo('.head5');
-            //opciones select fin
-            $('<select></select>').attr('class','head6').appendTo('.head4');
-            //opciones select2
-            $('<option>Talla</option>').attr('hidden','').attr('selected','').appendTo('.head6');
-            $('<option>S</option>').attr('value','S').appendTo('.head6');
-            $('<option>M</option>').attr('value','M').appendTo('.head6');
-            $('<option>L</option>').attr('value','L').appendTo('.head6');
-            $('<option>XL</option>').attr('value','XL').appendTo('.head6');
-            //opciones select2 fin
-            $('<select></select>').attr('class','precio head7').appendTo('.head4');
-            //opciones select3 
-            $('<option>Precio</option>').attr('hidden','').attr('selected','').appendTo('.head7');
-            $('<option>10€-50€</option>').attr('value1','1').appendTo('.head7');
-            $('<option>50€-100€</option>').attr('value1','2').appendTo('.head7');
-            $('<option>+100€</option>').attr('value1','3').appendTo('.head7');
-            //opciones select3 fin
-            $('<select></select>').attr('class','fechaa head8').appendTo('.head4');
-            //opciones select4
-            $('<option>Genero</option>').attr('hidden','').attr('selected','').appendTo('.head8');
-            $('<option>Hombre</option>').attr('value1','M').appendTo('.head8');
-            $('<option>Mujer</option>').attr('value1','W').appendTo('.head8');
-            $('<option>Hombre&Mujer</option>').attr('value1','M&W').appendTo('.head8');
+            $('<div></div>').attr('class','contenedor-filter filter').appendTo('#DivHead');
+            $('<form></form>').attr('class','formulario formu').attr('name','filtrosShop').attr('id','filtrosShop').appendTo('.filter');
+            $('<div></div>').attr('class','divider').appendTo('.formu');
+            $('<a>Aplicar</a>').attr('class','botones3').attr('id','aplicar').appendTo('.divider');
+            $('<a>Todos</a>').attr('href','#').attr('class','activo').appendTo('.divider');
+            $('<div></div>').attr('class','marca divider1').appendTo('.formu');
+            $('<h2>Escoja una marca</h2>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca1').attr('id','marca1').attr('value','Nike').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Nike</label>').attr('for','marca1').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca2').attr('id','marca2').attr('value','Adidas').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Adidas</label>').attr('for','marca2').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca3').attr('id','marca3').attr('value','Carhartt').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Carhartt</label>').attr('for','marca3').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca4').attr('id','marca4').attr('value','Bape').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Bape</label>').attr('for','marca4').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca5').attr('id','marca5').attr('value','Guess').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Guess</label>').attr('for','marca5').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca6').attr('id','marca6').attr('value','Polo Ralph Lauren').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Polo Ralph Lauren</label>').attr('for','marca6').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca7').attr('id','marca7').attr('value','Obey').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Obey</label>').attr('for','marca7').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca8').attr('id','marca8').attr('value','Supreme').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>Supreme</label>').attr('for','marca8').appendTo('.divider1');
+            $('<br></br>').appendTo('.divider1');
+            $('<input></input>').attr('type','checkbox').attr('name','marca9').attr('id','marca9').attr('value','The North Face</label').attr('onclick','validaFilters()').appendTo('.divider1');
+            $('<label>The North Face</label>').attr('for','marca9').appendTo('.divider1');
+            $('<div></div>').attr('class','talla divider2').appendTo('.formu');
+            $('<h2>Escoja una talla</h2>').appendTo('.divider2');
+            $('<input></input>').attr('type','checkbox').attr('name','talla1').attr('id','talla1').attr('value','S').attr('onclick','validaFilters()').appendTo('.divider2');
+            $('<label>S</label>').attr('for','talla1').appendTo('.divider2');
+            $('<br></br>').appendTo('.divider2');
+            $('<input></input>').attr('type','checkbox').attr('name','talla2').attr('id','talla2').attr('value','M').attr('onclick','validaFilters()').appendTo('.divider2');
+            $('<label>M</label>').attr('for','talla2').appendTo('.divider2');
+            $('<br></br>').appendTo('.divider2');
+            $('<input></input>').attr('type','checkbox').attr('name','talla3').attr('id','talla3').attr('value','L').attr('onclick','validaFilters()').appendTo('.divider2');
+            $('<label>L</label>').attr('for','talla3').appendTo('.divider2');
+            $('<br></br>').appendTo('.divider2');
+            $('<input></input>').attr('type','checkbox').attr('name','talla4').attr('id','talla4').attr('value','XL').attr('onclick','validaFilters()').appendTo('.divider2');
+            $('<label>XL</label>').attr('for','talla4').appendTo('.divider2');
 
-            $('<select></select>').attr('class','fechaa head9').appendTo('.head4');
-            //opciones select5
-            $('<option>Tipo</option>').attr('hidden','').attr('selected','').appendTo('.head9');
-            $('<option>Camiseta</option>').attr('value','Camiseta').appendTo('.head9');
-            $('<option>Sudadera</option>').attr('value','Sudadera').appendTo('.head9');
-            $('<option>Vaqueros</option>').attr('value','Vaqueros').appendTo('.head9');
-            $('<option>Chaqueta</option>').attr('value','Chaqueta').appendTo('.head9');
-            $('<option>Camisa</option>').attr('value','Camisa').appendTo('.head9');
-            //opciones select5 fin
-            $('<input></input>').attr('class','Submit').attr('name','Submit').attr('type','button').attr('value','Enviar').attr('onclick','filters()').appendTo('.head4');
             x=0;
         for (row in data){
             //CONTENIDO
@@ -107,85 +121,102 @@ function cat_shop(){
                 x++;
         }
     })
+    
     });
+    sessionStorage.clear();
 }
-
-function filters(){
-
-    $('body').on('click','.filters',function(){
-        alert('hago click');
-        var valor=this.getAttribute('value');
-        var valor1=this.getAttribute('value');
-        var filterArray=[valor,valor1];
-        console.log(filterArray);
-        $.ajax({
-        type: "GET",
-        dataType: "JSON",
-        url: "/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&filterArray="+filterArray,
-        error:function(){
-            console.log("error filters");
-        },
-        success:(function(data){
-         //HEADER 
-        $('<header></header>').attr('class','head1').appendTo('#DivHead');
-        $('<div></div>').attr('class','tituloL head2').appendTo('.head1');
-        $('<h1>Nuestros Artículos</h1>').appendTo('.head2');
-        $('<p>Descubre todos los artículos del mercado y escoge el diseño que mas te guste</p>').appendTo('.head2');
-        $('<form></form>').attr('action','').attr('class','head3').appendTo('.head2');
-        $('<input></input>').attr('type','text').attr('class','busqueda').attr('id','busqueda').attr('placeholder','Buscar').appendTo('.head3');
-        $('<div></div>').attr('class','catego_List head4').attr('id','catego_List').appendTo('.head2');
-        $('<a>Todos</a>').attr('href','#').attr('class','activo').appendTo('.head4');
-        $('<select></select>').attr('class','head5').attr('id','marca').attr('name','marca').appendTo('.head4');
-        //opciones select
-        $('<option>Marca</option>').attr('hidden','').attr('selected','').appendTo('.head5');
-        $('<option>Nike</option>').attr('value','Nike').appendTo('.head5');
-        $('<option>Adidas</option>').attr('value','Adidas').appendTo('.head5');
-        $('<option>Carhartt</option>').attr('value','Carhartt').appendTo('.head5');
-        $('<option>Bape</option>').attr('value','Bape').appendTo('.head5');
-        $('<option>Supreme</option>').attr('value','Supreme').appendTo('.head5');
-        $('<option>Guess</option>').attr('value','Guess').appendTo('.head5');
-        $('<option>Obey</option>').attr('value','Obey').appendTo('.head5');
-        $('<option>The North Face</option>').attr('value','The North Face').appendTo('.head5');
-        $('<option>Polo Ralph Lauren</option>').attr('value','Polo Ralph Lauren').appendTo('.head5');
-        //opciones select fin
-        $('<select></select>').attr('class','head6').attr('id','talla').attr('name','talla').appendTo('.head4');
-        //opciones select2
-        $('<option>Talla</option>').attr('hidden','').attr('selected','').appendTo('.head6');
-        $('<option>S</option>').attr('value','S').appendTo('.head6');
-        $('<option>M</option>').attr('value','M').appendTo('.head6');
-        $('<option>L</option>').attr('value','L').appendTo('.head6');
-        $('<option>XL</option>').attr('value','XL').appendTo('.head6');
-        //opciones select2 fin
-        $('<select></select>').attr('class','precio head7').appendTo('.head4');
-        //opciones select3 
-        $('<option>Precio</option>').attr('hidden','').attr('selected','').appendTo('.head7');
-        $('<option>10€-50€</option>').attr('value','1').appendTo('.head7');
-        $('<option>50€-100€</option>').attr('value','2').appendTo('.head7');
-        $('<option>+100€</option>').attr('value','3').appendTo('.head7');
-        //opciones select3 fin
-        $('<select></select>').attr('class','fechaa head8').appendTo('.head4');
-        //opciones select4
-        $('<option>Genero</option>').attr('hidden','').attr('selected','').appendTo('.head8');
-        $('<option>Hombre</option>').attr('value','M').appendTo('.head8');
-        $('<option>Mujer</option>').attr('value','W').appendTo('.head8');
-        $('<option>Hombre&Mujer</option>').attr('value','M&W').appendTo('.head8');
-        //opciones select4 fin
-        
-            x=0;
-        for (row in data){
-            //CONTENIDO
-            console.log(data);
-            $('<span></span>').attr('class','items sup'+x).appendTo('#Div3');
-            $('<span></span>').attr('class','item-contenido suport'+x).appendTo('.sup'+x);
-            $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
-            $('<img></img>').attr('id',''+data[row].codigo+'').attr('class','details defin'+x).attr('src',''+data[row].img+'').attr('alt','').appendTo('.link'+x);
-            $('<div>'+data[row].nombre+'</div>').attr('class','preu'+x).appendTo('.sup'+x);
-            $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
-                x++;
+function validaFilters(){
+    sessionStorage.clear();
+        console.log('Entra filtros');
+        if (document.filtrosShop.marca1.checked){
+            var filtrado=1;
+            var marca1=document.filtrosShop.marca1.value;
+        }else {
+            var marca1="";
+            var filtrado=1;
         }
-        })
+        if (document.filtrosShop.marca2.checked){
+            var filtrado=1;
+            var marca2=document.filtrosShop.marca2.value;
+        }else {
+            var marca2="";
+        }
+        if (document.filtrosShop.marca3.checked){
+            var filtrado=1;
+            var marca3=document.filtrosShop.marca3.value;
+        }else {
+            var marca3="";
+        }
+        if (document.filtrosShop.marca4.checked){
+            var filtrado=1;
+            var marca4=document.filtrosShop.marca4.value;
+        }else {
+            var marca4="";
+        }
+        if (document.filtrosShop.marca5.checked){
+            var filtrado=1;
+            var marca5=document.filtrosShop.marca5.value;
+        }else {
+            var marca5="";
+        }
+        if (document.filtrosShop.marca6.checked){
+            var filtrado=1;
+            var marca6=document.filtrosShop.marca6.value;
+        }else {
+            var marca6="";
+        }
+        if (document.filtrosShop.marca7.checked){
+            var filtrado=1;
+            var marca7=document.filtrosShop.marca7.value;
+        }else {
+            var marca7="";
+        }
+        if (document.filtrosShop.marca8.checked){
+            var filtrado=1;
+            var marca8=document.filtrosShop.marca8.value;
+        }else {
+            var marca8="";
+        }
+        if (document.filtrosShop.marca9.checked){
+            var filtrado=1;
+            var marca9=document.filtrosShop.marca9.value;
+        }else {
+            var marca9="";
+        }
+        if (document.filtrosShop.talla1.checked){
+            var filtrado=1;
+            var talla1=document.filtrosShop.talla1.value;
+        }else {
+            var talla1="";
+        }
+        if (document.filtrosShop.talla2.checked){
+            var filtrado=1;
+            var talla2=document.filtrosShop.talla2.value;
+        }else {
+            var talla2="";
+        }
+        if (document.filtrosShop.talla3.checked){
+            var filtrado=1;
+            var talla3=document.filtrosShop.talla3.value;
+        }else {
+            var talla3="";
+        }
+        if (document.filtrosShop.talla4.checked){
+            var filtrado=1;
+            var talla4=document.filtrosShop.talla4.value;
+        }else {
+            var talla4="";
+        }
+        if(marca1=="" && marca1=="" && marca2=="" && marca3=="" && marca4=="" && marca5=="" && marca6=="" && marca7=="" && marca8=="" && marca9=="" && talla1=="" && talla2=="" && talla3=="" && talla4==""){
+            filtrado=0;
+        }
+        $('body').on('click','#aplicar',function(){
+            sessionStorage.setItem('filtrado',filtrado);
+            sessionStorage.setItem('marcas',marcas);
+            sessionStorage.setItem('tallas',tallas);
+            window.location.href="index.php?page=list_shop";
         });
-    });
+
 
 }
 
@@ -365,12 +396,12 @@ function load_divs(){
     $('<div></div>').attr('id','Div3').appendTo('#listS');
     cat_shop();
     details();
-    filters();
 
 }
 $(document).ready(function(){
 load_divs();
 efectos_shop();
+
 });
 /////////DEBUG ERROR AJAX//////////////
     // $.ajax({
