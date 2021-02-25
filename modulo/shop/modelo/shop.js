@@ -10,12 +10,11 @@ function efectos_shop(){
         document.getElementById('grid').classList.add('imagenes-cargadas');
     });
 }
-function cat_shop(correcte,consulta){
-
+function cat_shop(correcte,consulta,){
     var nom=localStorage.getItem('nombre');
     var filtrado1 =sessionStorage.getItem('filtrado');
-    var marcas1=sessionStorage.getItem('marcas');
-    var tallas1=sessionStorage.getItem('tallas');
+    var marcas=sessionStorage.getItem('marcas');
+    var tallas=sessionStorage.getItem('tallas');
     console.log(filtrado1);
     if(correcte==1){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom;
@@ -42,8 +41,9 @@ function cat_shop(correcte,consulta){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
         }
     }else if (filtrado1==1){
-        console.log(marcas1,tallas1,filtrado1);
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&nom="+nom+"&marcas1="+marcas1+"&tallas1="+tallas1; 
+        
+        console.log(marcas,tallas,filtrado1);
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&nom="+nom+"&marcas="+marcas+"&tallas="+tallas; 
         console.log(url);
     }
     }
@@ -128,7 +128,7 @@ function cat_shop(correcte,consulta){
     })
     
     });
-
+    sessionStorage.clear();
 }
 function validaFilters(){
     sessionStorage.clear();
@@ -399,7 +399,7 @@ function load_divs(){
     $('<div></div>').attr('id','Div3').appendTo('#listS');
     cat_shop();
     details();
- 
+    
 
 }
 $(document).ready(function(){

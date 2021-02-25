@@ -249,7 +249,7 @@ switch ($_GET['op']){
 
             try{
                 $daoshop = new DAOshop();
-                $rdo = $daoshop->filters($_GET['nom'],$_GET['marcas1'],$_GET['tallas1']);
+                $rdo = $daoshop->filters($_GET['nom'],$_GET['marcas'],$_GET['tallas']);
             }catch (Exception $e){
                 echo json_encode("error");
                       exit;
