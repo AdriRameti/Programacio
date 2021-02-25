@@ -31,7 +31,7 @@
 	padding: 20px 0;
 	border-bottom: 1px solid #ccc;
 }
-.formulario input[type="checkbox"]{
+.formulario input[type="radio"]{
 	display: none;
 }
 .formulario .marca label,
@@ -64,13 +64,13 @@
 	
 	background: rgba(0,116,217,0.2);
 }
-.formulario input[type="checkbox"]:checked + label{
+.formulario input[type="radio"]:checked + label{
 	padding: 5px 15px 5px;
 	background: #0774D9;
 	border-radius: 2px;
 	color:#fff;
 }
-.formulario input[type="checkbox"]:checked + label:before{
+.formulario input[type="radio"]:checked + label:before{
 	display: none;
 }
 .botones3{

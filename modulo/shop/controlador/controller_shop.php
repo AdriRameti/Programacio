@@ -226,8 +226,7 @@ switch ($_GET['op']){
         }
         break;
         case "details":
-        //                    $data = "Entra controlador";
-        // die('<script>console.log('.json_encode( $data ) .');</script>');
+
             try{
                 $daoshop = new DAOshop();
                 $rdo = $daoshop->show_details($_GET['codigo']);
@@ -247,15 +246,16 @@ switch ($_GET['op']){
             }
             break;
         case "filters":
+
             try{
                 $daoshop = new DAOshop();
-                $rdo = $daoshop->filters($_GET['filterArray']);
+                $rdo = $daoshop->filters($_GET['nom'],$_GET['marcas1'],$_GET['tallas1']);
             }catch (Exception $e){
                 echo json_encode("error");
                       exit;
             }
             if(!$rdo){
-                echo json_encode("Error");
+                echo json_encode("Error resultado");
                     exit;
             }else{
                 $arry=array();
@@ -265,25 +265,25 @@ switch ($_GET['op']){
                 echo json_encode($arry);
             }
                 break;
-        // case "search":
-        //     try{
-        //         $daoshop = new DAOshop();
-        //         $rdo = $daoshop->filters($_GET['filterArray']);
-        //     }catch (Exception $e){
-        //         echo json_encode("error");
-        //         exit;
-        //     }
-        //     if(!$rdo){
-        //         echo json_encode("Error");
-        //         exit;
-        //     }else{
-        //         $arry=array();
-        //         foreach ($rdo as $value) {
-        //             array_push($arry, $value);
-        //         }
-        //         echo json_encode($arry);
-        //         }
-        // break;
+        case "search":
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->search($_GET['consulta'],$_GET['nom']);
+            }catch (Exception $e){
+                echo json_encode("error");
+                exit;
+            }
+            if(!$rdo){
+                echo json_encode("Error");
+                exit;
+            }else{
+                $arry=array();
+                foreach ($rdo as $value) {
+                    array_push($arry, $value);
+                }
+                echo json_encode($arry);
+                }
+        break;
         case "views":
             $daoshop = new DAOshop();
             $rdo = $daoshop->views_up($_GET['codigo']);

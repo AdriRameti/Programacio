@@ -17,16 +17,41 @@ function views_up($codigo){
     connect::close($conexion);
     return $res;
 }
-function filters(){
-    $sql="";
+function filters($nom,$marcas1,$tallas1){
+    if ($nom=="Tshirt"){
+        $nombre='Camiseta';
+    }else if($nom=="Formal"){
+        $nombre='Formal';
+    } else if($nom=="Hoodies"){
+        $nombre='Sudadera';
+    }else if($nom=="Sneakers"){
+        $nombre='Sneakers';
+    }else if($nom=="Accesories"){
+        $nombre='Accesories';
+    }else if($nom=="Jeans"){
+        $nombre='Vaqueros';
+    }else if($nom=="Shirt"){
+        $nombre='Camisa';
+    }else if($nom=="Pants"){
+        $nombre='Pantalon';
+    }else if($nom=="Jacket"){
+        $nombre='Chaqueta';
+    }
+    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre=$nombre AND (marca=$marcas1 OR talla=$tallas1) by visitas DESC";
+    $conexion = connect::con();
+    $res = mysqli_query($conexion, $sql);
+    connect::close($conexion);
+    return $res;
+}
+function search($consulta,$nom){
+    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre=$nom AND (nombre LIKE '%$consulta%' OR marca LIKE '%$consulta%') order by visitas DESC";;
     $conexion = connect::con();
     $res = mysqli_query($conexion, $sql);
     connect::close($conexion);
     return $res;
 }
 function select_Tshirts(){
-        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Camiseta' order by visitas DESC";
-        
+        $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='Camiseta' order by visitas DESC"; 
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql);
         connect::close($conexion);
