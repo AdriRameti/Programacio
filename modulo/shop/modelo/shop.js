@@ -15,7 +15,7 @@ function cat_shop(correcte,consulta,){
     var filtrado1 =sessionStorage.getItem('filtrado');
     var marcas=sessionStorage.getItem('marcas');
     var tallas=sessionStorage.getItem('tallas');
-    console.log(filtrado1);
+    console.log(filtrado1,marcas,tallas);
     if(correcte==1){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom;
         // console.log(url);
@@ -41,10 +41,7 @@ function cat_shop(correcte,consulta,){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
         }
     }else if (filtrado1==1){
-        
-        console.log(marcas,tallas,filtrado1);
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&nom="+nom+"&marcas="+marcas+"&tallas="+tallas; 
-        console.log(url);
     }
     }
         
@@ -54,7 +51,7 @@ function cat_shop(correcte,consulta,){
         url:url,
         
         error:function(){
-            console.log("error shop");
+            console.log('Error shop');
         },
     success:(function(data){
         console.log(data);
@@ -70,7 +67,7 @@ function cat_shop(correcte,consulta,){
             $('<form></form>').attr('class','formulario formu').attr('name','filtrosShop').attr('id','filtrosShop').appendTo('.filter');
             $('<div></div>').attr('class','divider').appendTo('.formu');
             $('<a>Aplicar</a>').attr('class','botones3').attr('id','aplicar').appendTo('.divider');
-            $('<a>Todos</a>').attr('href','#').attr('class','activo').appendTo('.divider');
+            $('<a>Todos</a>').attr('href','#').attr('class','activo').attr('id','remove').appendTo('.divider');
             $('<div></div>').attr('class','marca divider1').appendTo('.formu');
             $('<h2>Escoja una marca</h2>').appendTo('.divider1');
             $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca1').attr('value','Nike').attr('onclick','validaFilters()').appendTo('.divider1');
@@ -201,7 +198,11 @@ function validaFilters(){
 
 
 }
+function remove_filters(){
+    $('body').on('click','#remove',function(){
 
+    });
+}
 function details(){
 $('body').on("click",".details",function(){
 var codigo = this.getAttribute('id');

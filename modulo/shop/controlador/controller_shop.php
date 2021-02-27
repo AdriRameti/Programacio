@@ -246,16 +246,20 @@ switch ($_GET['op']){
             }
             break;
         case "filters":
-
-            try{
+            $nombres=$_GET['nom'];
+            $marca=$_GET['marcas'];
+            $talla=$_GET['tallas'];
+            try{    
                 $daoshop = new DAOshop();
-                $rdo = $daoshop->filters($_GET['nom'],$_GET['marcas'],$_GET['tallas']);
+                $rdo = $daoshop->filters($nombres,$marca,$talla);
+                // echo json_encode($rdo);
+                // exit;
             }catch (Exception $e){
                 echo json_encode("error");
                       exit;
             }
             if(!$rdo){
-                echo json_encode("Error resultado");
+                echo json_encode('Error resultado');
                     exit;
             }else{
                 $arry=array();
