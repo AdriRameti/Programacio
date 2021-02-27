@@ -8,6 +8,19 @@
 	max-width: 1500 px;
 	margin:auto;
 }
+#busqueda2{
+	position: absolute;
+	left: 650px;;
+	width: 30%;
+	height: 40px;
+	line-height: 40px;
+	background:rgb(193, 230, 243);
+	padding: 0 20px;
+	/* border-radius: 100px;
+	border: none; */
+	text-align: center;
+	font-size: 16px;
+}
 /*********************************************************************/
 /********Filtros**************************************************/
 .activo{
@@ -1719,6 +1732,8 @@ body {
   
   .portfolio .portfolio-item img {
 	transition: all 0.3s ease-in-out;
+	height: 450px;
+	width: 350px;
   }
   
   .portfolio .portfolio-item .portfolio-info {
