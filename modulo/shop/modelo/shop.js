@@ -4,7 +4,7 @@ function efectos_shop(){
     const grid = new Muuri('.grid',{
         layout: {
             rounding: false
-        }
+        } 
     });
     window.addEventListener('load',() => {
         document.getElementById('grid').classList.add('imagenes-cargadas');
@@ -54,7 +54,9 @@ function cat_shop(correcte,consulta,){
             console.log('Error shop');
         },
     success:(function(data){
+
         console.log(data);
+
                     //HEADER 
             $('<header></header>').attr('class','head1').appendTo('#DivHead');
             $('<div></div>').attr('class','tituloL head2').appendTo('.head1');
@@ -126,6 +128,8 @@ function cat_shop(correcte,consulta,){
     
     });
     sessionStorage.clear();
+    jQuery('#Div3').empty();
+    jQuery('#DivHead').empty();
 }
 function validaFilters(){
     sessionStorage.clear();
@@ -200,7 +204,10 @@ function validaFilters(){
 }
 function remove_filters(){
     $('body').on('click','#remove',function(){
-
+        filtrado=sessionStorage.getItem('filtrado');
+        filtrado=0;
+        sessionStorage.setItem('filtrado',filtrado);
+        window.location.href="index.php?page=list_shop";
     });
 }
 function details(){
@@ -373,40 +380,33 @@ var codigo = this.getAttribute('id');
     });
 });
 }
-// function buscar(pesfesto,consulta){
-//     console.log(pesfesto,consulta);
-//     $.ajax({
-//         type:'GET',
-//         dataType: 'JSON',
-//         url:"/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta,
-//         // data:{consulta: consulta},
-//         success:(function(data){
-//         })
-//     });
-// }
-$(document).on('keyup','#busqueda',function(){
-    var valor=$(this).val();
-    if(valor!=""){
-        console.log(valor);
-        var correcto=1;
-        // buscar(correcto,valor);
-        cat_shop(correcto,valor);
-    }else{
-        console.log("No escribi");
-    }
-});
+function buscar(){
+    $(document).on('keyup','#busqueda',function(){
+        var valor=$(this).val();
+        if(valor!=""){
+            console.log(valor);
+            var correcto=1;
+            // buscar(correcto,valor);
+            cat_shop(correcto,valor);
+        }else{
+            console.log("No escribi");
+        }
+    });
+}
+
 function load_divs(){
     $('<div></div>').attr('id','DivHead').appendTo('#headShop');
     $('<div></div>').attr('id','Div3').appendTo('#listS');
     cat_shop();
     details();
-    
+    remove_filters();
+    // buscar();
 
 }
 $(document).ready(function(){
 load_divs();
 efectos_shop();
-// buscar();
+buscar();
 
 });
 /////////DEBUG ERROR AJAX//////////////
