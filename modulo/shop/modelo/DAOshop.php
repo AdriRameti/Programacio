@@ -17,6 +17,15 @@ function views_up($codigo){
     connect::close($conexion);
     return $res;
 }
+function shop($nom){
+
+    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='$nom' order by visitas DESC"; 
+    // die($sql);
+    $conexion = connect::con();
+    $res = mysqli_query($conexion, $sql);
+    connect::close($conexion);
+    return $res;
+}
 function filters($nombres,$marca,$talla){
 
     $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='$nombres' AND (marca='$marca' OR talla='$talla') order by visitas DESC";

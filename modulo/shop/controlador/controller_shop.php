@@ -5,225 +5,34 @@ switch ($_GET['op']){
     case "list":
         include("modulo/shop/vista/list_shop.html");
         break;
+        case "Shop":
+            try{
     
-    case "Camiseta":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Tshirts();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->shop($_GET['nom']);
+        
+            }catch(Exception $e){
+                $callback = 'index.php?page=503';
+            die('<script>window.location.href="'.$callback .'";</script>');
             }
-
-            echo json_encode($arry);
+            if(!$rdo){
+                echo json_encode("Error");
+                exit;
+        
+            }else{
+                $arry=array();
     
-            
-        }
-
-        break;
-    case "Formal":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Formal();
+                foreach ($rdo as $value) {
+                    array_push($arry, $value);
+                }
     
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
+                echo json_encode($arry);
+        
+                
             }
-            echo json_encode($arry);
     
-            
-        }
-        break;
-    case "Sudadera":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Hoodies();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
-        break;
-    case "Sneakers":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Sneakers();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
-        break;
-    case "Accesories": //Falta crear modulo accesories 
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Tshirts();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
-        break;
-    case "Vaqueros":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Jeans();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
-        break;
-    case "Camisa":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Shirt();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
-        break;
-    case "Pantalon":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Pants();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
-        break;
-    case "Chaqueta":
-        try{
-
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->select_Jacket();
-    
-        }catch(Exception $e){
-            $callback = 'index.php?page=503';
-        die('<script>window.location.href="'.$callback .'";</script>');
-        }
-        if(!$rdo){
-            echo json_encode("Error");
-            exit;
-    
-        }else{
-            $arry=array();
-            foreach ($rdo as $value) {
-                array_push($arry, $value);
-            }
-            echo json_encode($arry);
-    
-            
-        }
+            break;
+   
         break;
         case "details":
 
