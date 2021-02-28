@@ -10,34 +10,34 @@ function efectos_shop(){
         document.getElementById('grid').classList.add('imagenes-cargadas');
     });
 }
-function cat_shop(correcte,consulta){
+function cat_shop(correcto,consulta){
     var nom=localStorage.getItem('nombre');
     var filtrado1 =sessionStorage.getItem('filtrado');
     var marcas=sessionStorage.getItem('marcas');
     var tallas=sessionStorage.getItem('tallas');
-    console.log(filtrado1,marcas,tallas);
-    if(correcte==1){
+    // console.log(marcas,nom);
+    if(correcto==1){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom;
         // console.log(url);
-    }else{
+    }else if(correcto!=1){
     if (filtrado1!=1){
-        if (nom=="Tshirt"){
+        if (nom=="Camiseta"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
         }else if(nom=="Formal"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        } else if(nom=="Hoodies"){
+        } else if(nom=="Sudadera"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
         }else if(nom=="Sneakers"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
         }else if(nom=="Accesories"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        }else if(nom=="Jeans"){
+        }else if(nom=="Vaqueros"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        }else if(nom=="Shirt"){
+        }else if(nom=="Camisa"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        }else if(nom=="Pants"){
+        }else if(nom=="Pantalon"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        }else if(nom=="Jacket"){
+        }else if(nom=="Chaqueta"){
             var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
         }
     }else if (filtrado1==1){
@@ -54,7 +54,7 @@ function cat_shop(correcte,consulta){
             console.log('Error shop');
         },
     success:(function(data){
-
+        $('#Div3').empty();
         console.log(data);
 
             x=0;
@@ -70,11 +70,9 @@ function cat_shop(correcte,consulta){
                 x++;
         }
     })
-    
     });
     sessionStorage.clear();
-    jQuery('#Div3').empty();
-    // jQuery('#DivHead').empty();
+   
 }
 function validaFilters(){
     sessionStorage.clear();
@@ -334,6 +332,8 @@ function buscar(){
             // buscar(correcto,valor);
             cat_shop(correcto,valor);
         }else{
+            correcto=0;
+            cat_shop(correcto);
             console.log("No escribi");
         }
     });

@@ -6,7 +6,7 @@ switch ($_GET['op']){
         include("modulo/shop/vista/list_shop.html");
         break;
     
-    case "Tshirt":
+    case "Camiseta":
         try{
 
             $daoshop = new DAOshop();
@@ -57,7 +57,7 @@ switch ($_GET['op']){
             
         }
         break;
-    case "Hoodies":
+    case "Sudadera":
         try{
 
             $daoshop = new DAOshop();
@@ -129,7 +129,7 @@ switch ($_GET['op']){
             
         }
         break;
-    case "Jeans":
+    case "Vaqueros":
         try{
 
             $daoshop = new DAOshop();
@@ -153,7 +153,7 @@ switch ($_GET['op']){
             
         }
         break;
-    case "Shirt":
+    case "Camisa":
         try{
 
             $daoshop = new DAOshop();
@@ -177,7 +177,7 @@ switch ($_GET['op']){
             
         }
         break;
-    case "Pants":
+    case "Pantalon":
         try{
 
             $daoshop = new DAOshop();
@@ -201,7 +201,7 @@ switch ($_GET['op']){
             
         }
         break;
-    case "Jacket":
+    case "Chaqueta":
         try{
 
             $daoshop = new DAOshop();
@@ -281,6 +281,8 @@ switch ($_GET['op']){
                 echo json_encode("Error");
                 exit;
             }else{
+                // echo json_encode($_GET['nom']);
+                // exit;
                 $arry=array();
                 foreach ($rdo as $value) {
                     array_push($arry, $value);

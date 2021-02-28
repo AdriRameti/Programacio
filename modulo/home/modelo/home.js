@@ -70,7 +70,6 @@ function cargar_cat(correcto2,valor2){
       $('#Div1').empty();
        x=0;
       for(row in data){
-        console.log(data);
       $('<div></div>').attr('class','col-lg-4 col-md-6 filter-clothes home1'+x).appendTo('#Div1');
       $('<div></div>').attr('class','portfolio-item home2'+x).appendTo('.home1'+x);
       $('<img></img>').attr('src',''+data[row].img+'').appendTo('.home2'+x);
@@ -84,7 +83,7 @@ function cargar_cat(correcto2,valor2){
     });
 
 }
-function buscar(){
+function buscar2(){
   $(document).on('keyup','#busqueda2',function(){
       var valor2=$(this).val();
       console.log(valor2);
@@ -116,5 +115,5 @@ function buscar(){
   $(document).ready(function(){
   cargar_divs();
   rediShop();
-  buscar();
+  buscar2();
   });

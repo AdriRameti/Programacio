@@ -18,27 +18,8 @@ function views_up($codigo){
     return $res;
 }
 function filters($nombres,$marca,$talla){
-    if ($nombres=="Tshirt"){
-        $nombre='Camiseta';
-    }else if($nombres=="Formal"){
-        $nombre='Formal';
-    } else if($nombres=="Hoodies"){
-        $nombre='Sudadera';
-    }else if($nombres=="Sneakers"){
-        $nombre='Sneakers';
-    }else if($nombres=="Accesories"){
-        $nombre='Accesories';
-    }else if($nombres=="Jeans"){
-        $nombre='Vaqueros';
-    }else if($nombres=="Shirt"){
-        $nombre='Camisa';
-    }else if($nombres=="Pants"){
-        $nombre='Pantalon';
-    }else if($nombres=="Jacket"){
-        $nombre='Chaqueta';
-    }
-    
-    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='$nombre' AND (marca='$marca' OR talla='$talla') order by visitas DESC";
+
+    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='$nombres' AND (marca='$marca' OR talla='$talla') order by visitas DESC";
     // die($sql);
     $conexion = connect::con();
     $res = mysqli_query($conexion, $sql);
@@ -46,26 +27,7 @@ function filters($nombres,$marca,$talla){
     return $res;
 }
 function search($consulta,$nom){
-    if ($nom=="Tshirt"){
-        $nombre='Camiseta';
-    }else if($nom=="Formal"){
-        $nombre='Formal';
-    } else if($nom=="Hoodies"){
-        $nombre='Sudadera';
-    }else if($nom=="Sneakers"){
-        $nombre='Sneakers';
-    }else if($nom=="Accesories"){
-        $nombre='Accesories';
-    }else if($nom=="Jeans"){
-        $nombre='Vaqueros';
-    }else if($nom=="Shirt"){
-        $nombre='Camisa';
-    }else if($nom=="Pants"){
-        $nombre='Pantalon';
-    }else if($nom=="Jacket"){
-        $nombre='Chaqueta';
-    }
-    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='$nombre' AND (nombre LIKE '%$consulta%' OR marca LIKE '%$consulta%') order by visitas DESC";
+    $sql = "SELECT codigo,nombre,marca,img,precio FROM ropa WHERE nombre='$nom' AND (nombre LIKE '%$consulta%' OR marca LIKE '%$consulta%') order by visitas DESC";
     // die($sql);
     $conexion = connect::con();
     $res = mysqli_query($conexion, $sql);
