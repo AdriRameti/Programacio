@@ -3,11 +3,11 @@
 	padding: 0px;
 	box-sizing: border-box;
 }
-.container_list{
+/* .container_list{
 	width: 90%;
 	max-width: 1500 px;
 	margin:auto;
-}
+} */
 #busqueda2{
 	position: absolute;
 	left: 650px;;
@@ -25,8 +25,8 @@
 /********Filtros**************************************************/
 .activo{
 	position: absolute;
-	left: 450px;
-	top: 380px;
+	left: 400px;
+	top: 350px;
 }
 .contenedor-filter{
 	width:90%;
@@ -159,11 +159,12 @@
 header{
 	padding: 40px;
 }
-header .tituloL{
+header .tituloL h1,p{
 	text-align: center;
 	margin-bottom: 40px;
 }
-header form{
+
+header  .formBusc{
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -175,13 +176,14 @@ header .busqueda{
 	line-height: 40px;
 	background:rgb(193, 230, 243);
 	padding: 0 20px;
+	/* justify-content: center; */
 	/* border-radius: 100px;
 	border: none; */
 	text-align: center;
 	font-size: 16px;
 }
 
-header .catego_List{
+/* header .catego_List{
 	display:flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -193,8 +195,6 @@ header .catego_List select{
 	line-height: 40px;
 	background:rgb(193, 230, 243);
 	padding: 0 20px;
-	/* border-radius: 100px;
-	border: none; */
 	text-align: center;
 	font-size: 16px;
 }
@@ -204,19 +204,16 @@ header .catego_List select.fechaa{
 	line-height: 40px;
 	background:rgb(193, 230, 243);
 	padding: 0 20px;
-	/* border-radius: 100px;
-	border: none; */
 	text-align: center;
 	font-size: 16px;
-}
-header .catego_List select.precio{
+} */
+/* header .catego_List select.precio{
 	width: 12%;
 	height: 40px;
 	line-height: 40px;
 	background:rgb(193, 230, 243);
 	padding: 0 20px;
-	/* border-radius: 100px;
-	border: none; */
+
 	text-align: center;
 	font-size: 16px;
 }
@@ -229,7 +226,7 @@ header .catego_List a{
 
 header .catego_List a.activo {
 	color: black;
-}
+} */
 /*********************************************************************/
 /**************************DETAILS************************************/
 /* * {

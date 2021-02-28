@@ -10,7 +10,6 @@ class DAOhome{
 
         connect::close($conexion);
         return $res;
-        // return json_encode($res);
     }
     function select_slider(){
         $sql = "SELECT img FROM categories;";
@@ -22,5 +21,12 @@ class DAOhome{
         return $res;
         // return json_encode($res);
     }
-   
+    function buscarHome($valor2){
+        $sql = "SELECT * FROM categories WHERE nombre LIKE '%$valor2%'";
+        // die($sql);
+        $conexion = connect::con();
+        $res = mysqli_query($conexion, $sql);
+        connect::close($conexion);
+        return $res;
+    }
 }

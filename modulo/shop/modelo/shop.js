@@ -10,7 +10,7 @@ function efectos_shop(){
         document.getElementById('grid').classList.add('imagenes-cargadas');
     });
 }
-function cat_shop(correcte,consulta,){
+function cat_shop(correcte,consulta){
     var nom=localStorage.getItem('nombre');
     var filtrado1 =sessionStorage.getItem('filtrado');
     var marcas=sessionStorage.getItem('marcas');
@@ -57,61 +57,6 @@ function cat_shop(correcte,consulta,){
 
         console.log(data);
 
-                    //HEADER 
-            $('<header></header>').attr('class','head1').appendTo('#DivHead');
-            $('<div></div>').attr('class','tituloL head2').appendTo('.head1');
-            $('<h1>Nuestros Artículos</h1>').appendTo('.head2');
-            $('<p>Descubre todos los artículos del mercado y escoge el diseño que mas te guste</p>').appendTo('.head2');
-            $('<form></form>').attr('action','').attr('class','head3').appendTo('.head2');
-            $('<input></input>').attr('type','text').attr('class','busqueda').attr('id','busqueda').attr('placeholder','Buscar').appendTo('.head3');
-            $('<div></div>').attr('class','catego_List head4').attr('id','catego_List').appendTo('.head2');
-            $('<div></div>').attr('class','contenedor-filter filter').appendTo('#DivHead');
-            $('<form></form>').attr('class','formulario formu').attr('name','filtrosShop').attr('id','filtrosShop').appendTo('.filter');
-            $('<div></div>').attr('class','divider').appendTo('.formu');
-            $('<a>Aplicar</a>').attr('class','botones3').attr('id','aplicar').appendTo('.divider');
-            $('<a>Todos</a>').attr('href','#').attr('class','activo').attr('id','remove').appendTo('.divider');
-            $('<div></div>').attr('class','marca divider1').appendTo('.formu');
-            $('<h2>Escoja una marca</h2>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca1').attr('value','Nike').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Nike</label>').attr('for','marca1').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca2').attr('value','Adidas').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Adidas</label>').attr('for','marca2').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca3').attr('value','Carhartt').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Carhartt</label>').attr('for','marca3').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca4').attr('value','Bape').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Bape</label>').attr('for','marca4').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca5').attr('value','Guess').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Guess</label>').attr('for','marca5').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca6').attr('value','Polo Ralph Lauren').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Polo Ralph Lauren</label>').attr('for','marca6').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca7').attr('value','Obey').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Obey</label>').attr('for','marca7').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca8').attr('value','Supreme').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>Supreme</label>').attr('for','marca8').appendTo('.divider1');
-            $('<br></br>').appendTo('.divider1');
-            $('<input></input>').attr('type','radio').attr('name','marca').attr('id','marca9').attr('value','The North Face').attr('onclick','validaFilters()').appendTo('.divider1');
-            $('<label>The North Face</label>').attr('for','marca9').appendTo('.divider1');
-            $('<div></div>').attr('class','talla divider2').appendTo('.formu');
-            $('<h2>Escoja una talla</h2>').appendTo('.divider2');
-            $('<input></input>').attr('type','radio').attr('name','talla').attr('id','talla1').attr('value','S').attr('onclick','validaFilters()').appendTo('.divider2');
-            $('<label>S</label>').attr('for','talla1').appendTo('.divider2');
-            $('<br></br>').appendTo('.divider2');
-            $('<input></input>').attr('type','radio').attr('name','talla').attr('id','talla2').attr('value','M').attr('onclick','validaFilters()').appendTo('.divider2');
-            $('<label>M</label>').attr('for','talla2').appendTo('.divider2');
-            $('<br></br>').appendTo('.divider2');
-            $('<input></input>').attr('type','radio').attr('name','talla').attr('id','talla3').attr('value','L').attr('onclick','validaFilters()').appendTo('.divider2');
-            $('<label>L</label>').attr('for','talla3').appendTo('.divider2');
-            $('<br></br>').appendTo('.divider2');
-            $('<input></input>').attr('type','radio').attr('name','talla').attr('id','talla4').attr('value','XL').attr('onclick','validaFilters()').appendTo('.divider2');
-            $('<label>XL</label>').attr('for','talla4').appendTo('.divider2');
-
             x=0;
         for (row in data){
             //CONTENIDO
@@ -129,7 +74,7 @@ function cat_shop(correcte,consulta,){
     });
     sessionStorage.clear();
     jQuery('#Div3').empty();
-    jQuery('#DivHead').empty();
+    // jQuery('#DivHead').empty();
 }
 function validaFilters(){
     sessionStorage.clear();
@@ -234,7 +179,7 @@ var codigo = this.getAttribute('id');
             });
             console.log(data);
             $('#Div3').empty();
-            $('#DivHead').empty();
+            $('.Head').empty();
             // for (row in data){
                 //Primera fila
                 $('<div></div>').attr('class','fila cabecera1').appendTo('#Div3');

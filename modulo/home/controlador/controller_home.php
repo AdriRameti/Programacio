@@ -26,6 +26,30 @@ switch ($_GET['pr']){
         
     }
     break;
+    case "BuscHome":
+        try{
+    
+            $daohome = new DAOhome();
+            $rdo = $daohome->buscarHome($_GET['valor2']);
+    
+        }catch(Exception $e){
+            $callback = 'index.php?page=503';
+        die('<script>window.location.href="'.$callback .'";</script>');
+        }
+        if(!$rdo){
+            echo json_encode("Error");
+            exit;
+    
+        }else{
+            $arry=array();
+            foreach ($rdo as $value) {
+                array_push($arry, $value);
+            }
+            echo json_encode($arry);
+    
+            
+        }
+        break;
     case "Slider":
         try{
             $daohome = new DAOhome();
