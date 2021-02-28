@@ -15,32 +15,12 @@ function cat_shop(correcto,consulta){
     var filtrado1 =sessionStorage.getItem('filtrado');
     var marcas=sessionStorage.getItem('marcas');
     var tallas=sessionStorage.getItem('tallas');
-    // console.log(marcas,nom);
     if(correcto==1){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom;
-        // console.log(url);
     }else if(correcto!=1){
     if (filtrado1!=1){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=Shop&nom="+nom;
-        // if (nom=="Camiseta"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Formal"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // } else if(nom=="Sudadera"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Sneakers"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Accesories"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Vaqueros"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Camisa"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Pantalon"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }else if(nom=="Chaqueta"){
-        //     var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op="+nom;
-        // }
+
     }else if (filtrado1==1){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&nom="+nom+"&marcas="+marcas+"&tallas="+tallas; 
     }
