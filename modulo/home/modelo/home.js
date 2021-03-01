@@ -71,17 +71,45 @@ function cargar_cat(correcto2,valor2){
        x=0;
       for(row in data){
       $('<div></div>').attr('class','col-lg-4 col-md-6 filter-clothes home1'+x).appendTo('#Div1');
-      $('<div></div>').attr('class','portfolio-item home2'+x).appendTo('.home1'+x);
+      $('<div></div>').attr('class','portfolio-item home2'+x).attr('id','scroll').appendTo('.home1'+x);
       $('<img></img>').attr('src',''+data[row].img+'').appendTo('.home2'+x);
       $('<div></div>').attr('class','portfolio-info home3'+x).appendTo('.home2'+x);
       $('<h3></h3>').attr('class','home4'+x).appendTo('.home3'+x);
       $('<a>'+data[row].nombre+'</a>').attr('href','').attr('class','venobox redicat').attr('id',''+data[row].nombre+'').attr('title',''+data[row].nombre+'').attr('data-gall','portfolioGallery').appendTo('.home4'+x);
+      
+      var scrol = document.querySelectorAll('#scroll');
+      var altura= $('div.col-lg-4.col-md-6.filter-clothes.home1'+x).offset();
+      var alturas=altura.top;
+      scrollHome(scrol,alturas);
       x++;
     }
 
       })
     });
 
+}
+function scrollHome(scrol,alturas){
+  $(document).on('scroll', function() {
+    // $(scrol[3]).css('opacity',0);
+    $(scrol[4]).css('opacity',0);
+    $(scrol[5]).css('opacity',0);
+    $(scrol[6]).css('opacity',0);
+    $(scrol[7]).css('opacity',0);
+    $(scrol[8]).css('opacity',0);
+    
+    var posicion = $(window).scrollTop();
+    var altura=alturas;
+    // console.log(scrol.length);
+    if((altura - 700)<posicion){
+      // $(scrol[3]).css('opacity',1);
+      $(scrol[4]).css('opacity',1);
+      $(scrol[5]).css('opacity',1);
+      $(scrol[6]).css('opacity',1);
+      $(scrol[7]).css('opacity',1);
+      $(scrol[8]).css('opacity',1);
+      
+    }
+});
 }
 function buscar2(){
   $(document).on('keyup','#busqueda2',function(){

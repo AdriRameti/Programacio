@@ -78,6 +78,9 @@ switch ($_GET['op']){
                 echo json_encode($arry);
             }
                 break;
+        case "countProds":
+            
+            break;
         case "search":
             try{
                 $daoshop = new DAOshop();
@@ -100,7 +103,19 @@ switch ($_GET['op']){
                 }
         break;
         case "views":
-            $daoshop = new DAOshop();
-            $rdo = $daoshop->views_up($_GET['codigo']);
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->views_up($_GET['codigo']);
+            }catch (Exception $e){
+                echo json_encode("error");
+                exit;
+            }
+            if(!$rdo){
+                echo json_encode("Error");
+                exit;
+            }else{
+                echo json_encode('Views Update');
+                exit;
+                }
             break;
 }

@@ -56,6 +56,20 @@ function cat_shop(correcto,consulta){
     sessionStorage.clear();
    
 }
+function pagination(){
+    var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=countProds";
+    $.ajax({
+        type:'GET',
+        dataType:'JSON',
+        url:url,
+        error:function(){
+            console.log('Error pagination');
+        },
+        success:(function(data){
+            
+        })
+    });
+}
 function validaFilters(){
     sessionStorage.clear();
     var marca="";
