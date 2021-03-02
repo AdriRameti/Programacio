@@ -176,57 +176,10 @@ header .busqueda{
 	line-height: 40px;
 	background:rgb(193, 230, 243);
 	padding: 0 20px;
-	/* justify-content: center; */
-	/* border-radius: 100px;
-	border: none; */
 	text-align: center;
 	font-size: 16px;
 }
 
-/* header .catego_List{
-	display:flex;
-	justify-content: center;
-	flex-wrap: wrap;
-
-}
-header .catego_List select{
-	width: 10%;
-	height: 40px;
-	line-height: 40px;
-	background:rgb(193, 230, 243);
-	padding: 0 20px;
-	text-align: center;
-	font-size: 16px;
-}
-header .catego_List select.fechaa{
-	width: 12%;
-	height: 40px;
-	line-height: 40px;
-	background:rgb(193, 230, 243);
-	padding: 0 20px;
-	text-align: center;
-	font-size: 16px;
-} */
-/* header .catego_List select.precio{
-	width: 12%;
-	height: 40px;
-	line-height: 40px;
-	background:rgb(193, 230, 243);
-	padding: 0 20px;
-
-	text-align: center;
-	font-size: 16px;
-}
-header .catego_List a{
-	color:#a4c1dd;
-	margin: 10px 20px;
-	font-size: 18px;
-	font-weight: 700;
-}
-
-header .catego_List a.activo {
-	color: black;
-} */
 /*********************************************************************/
 /**************************DETAILS************************************/
 /* * {

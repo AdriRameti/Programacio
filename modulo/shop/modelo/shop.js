@@ -249,6 +249,7 @@ alert(codigo);
                         //Informacion Intro1
                         $('<div></div>').attr('class','contenido1').appendTo('.intro1');
                             //Contenido
+                            $('<a>Volver</a>').attr('href','index.php?page=list_shop').appendTo('.contenido1');
                             $('<h1>'+data[0].marca+'</h1>').appendTo('.contenido1');
                             $('<div></div>').attr('class','info contenidoE1').appendTo('.contenido1');
                                 //ContenidoE
