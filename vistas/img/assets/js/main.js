@@ -57,7 +57,6 @@
   });
      //My carrousel
      $(document).ready(function(){
-      function carousel(){
         var current = 0;
         var imagenes = new Array();
           var numImages = 9;
@@ -102,7 +101,7 @@
        
               return false;
           }); 
-      }
+      
       
           
       })

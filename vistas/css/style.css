@@ -292,12 +292,17 @@ header .busqueda{
   .infoEnv{
 	  width: 600px;
 	  position: absolute;
-	  top: 1780px;
+	  top: 1750px;
 	  left:550px;
 	  text-align: justify;
   }
   .detalles{
 	  outline: none;
+  }
+  .detallesApi{
+	  position: absolute;
+	  top: 1890px;
+	  left:770px;
   }
   .vinculos{
 	   color: black;

@@ -43,7 +43,7 @@ function cat_shop(correcto,consulta){
             x=0;
         for (row in data){
             //CONTENIDO
-            console.log(data);
+            // console.log(data);
             $('<span></span>').attr('class','items sup'+x).appendTo('#Div3');
             $('<span></span>').attr('class','item-contenido suport'+x).appendTo('.sup'+x);
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
@@ -202,7 +202,6 @@ function remove_filters(){
 function details(){
 $('body').on("click",".details",function(){
 var codigo = this.getAttribute('id');
-alert(codigo);
     $.ajax({
         type: "GET",
         dataType: "JSON",
@@ -320,6 +319,7 @@ alert(codigo);
                             $('<div></div>').attr('class','divDet').appendTo('.detallesShop');
                                 $('<p></p>').attr('class','linques').appendTo('.divDet');
                                     $('<a>'+data[0].descriptotal+'</a>').attr('name','informacion').appendTo('.linques');
+                            
                             //END Información Details
 
                         $('<br></br>').appendTo('.precontenido5');
@@ -366,8 +366,33 @@ alert(codigo);
                             $('<a>Tienes 14 días para hacer devoluciones desde que recibes el producto. Ampliación del plazo de devolución durante el periodo de fiestas: Todos los pedidos realizados entre el 9 de diciembre de 2020 y el 5 de enero de 2021 podrán devolverse hasta el 19 de enero de 2021.</a>').attr('class','textJust').appendTo('.infoEnvio');
                         //ENDInformación Seccion Descripcion
                     //END Seccion Envio
+                    //SECCION RELACIONADOS
+                    $('<div></div>').attr('class','precontenido7').appendTo('.cabecera3');
+                        $('<details></details>').attr('open','').attr('class','detallesApi detallesApi1').appendTo('.precontenido7');
+                        $('<summary>Productos de tu interes</summary>').appendTo('.detallesApi1');
+                        $('<div></div>').attr('class','infoApi').appendTo('.detallesApi1');
                 //END Tercera fila
             // }
+            $.ajax({
+                url: "https://www.googleapis.com/books/v1/volumes?q="+data[0].nombre,
+                type:'GET',
+                dataType: 'JSON',
+                success: function(data) {
+                      console.log(data.items[0]);
+                      x=0;
+                    for (i=0; i <3;i++){
+                        $('<div></div>').attr('class','col-lg-4 col-md-6 filter-clothes home1'+x).appendTo('.infoApi');
+                        $('<div></div>').attr('class','portfolio-item home2'+x).attr('id','scroll').appendTo('.home1'+x);
+                        $('<img></img>').attr('src',''+data.items[i].volumeInfo.imageLinks.smallThumbnail+'').appendTo('.home2'+x);
+                        $('<div></div>').attr('class','portfolio-info home3'+x).appendTo('.home2'+x);
+                        $('<h3></h3>').attr('class','home4'+x).appendTo('.home3'+x);
+                        $('<a>'+data.items[i].volumeInfo.title+'</a>').attr('href','').attr('class','venobox redicat').attr('data-gall','portfolioGallery').appendTo('.home4'+x);
+                        $('<a>'+data.items[i].saleInfo.retailPrice.amount+'€</a>').attr('class','home4'+x).appendTo('.home3'+x);
+                        x++;
+                    }
+                  
+                }
+              });
         })
     });
 });
@@ -388,7 +413,9 @@ function buscar(){
         }
     });
 }
+// function api(){
 
+// }
 function load_divs(){
     $('<div></div>').attr('id','DivHead').appendTo('#headShop');
     $('<div></div>').attr('id','Div3').appendTo('#listS');
@@ -397,9 +424,9 @@ function load_divs(){
     details();
     remove_filters();
     pagination();
-    // buscar();
-
+    // api();
 }
+
 $(document).ready(function(){
 load_divs();
 efectos_shop();
