@@ -11,18 +11,22 @@ function efectos_shop(){
     });
 }
 function cat_shop(correcto,consulta){
+    var offset=localStorage.getItem('offset');
+    var confirmar=localStorage.getItem('confirm');
     var nom=localStorage.getItem('nombre');
     var filtrado1 =sessionStorage.getItem('filtrado');
     var marcas=sessionStorage.getItem('marcas');
     var tallas=sessionStorage.getItem('tallas');
-    if(correcto==1){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom;
+    // console.log(filtrado1);
+    if(correcto==1 && (confirmar==1)){
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom+"&offset="+offset;
     }else if(correcto!=1){
-    if (filtrado1!=1){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=Shop&nom="+nom;
+    if ((filtrado1!=1) && (confirmar==1)){
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=Shop&nom="+nom+"&offset="+offset;
+        
 
-    }else if (filtrado1==1){
-        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&nom="+nom+"&marcas="+marcas+"&tallas="+tallas; 
+    }else if ((filtrado1==1) && (confirmar==1)){
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=filters&nom="+nom+"&marcas="+marcas+"&tallas="+tallas+"&offset="+offset; 
     }
     }
         
@@ -35,14 +39,11 @@ function cat_shop(correcto,consulta){
             console.log('Error shop');
         },
     success:(function(data){
-        console.log(url);
         $('#Div3').empty();
-        console.log(data);
-
             x=0;
         for (row in data){
             //CONTENIDO
-            // console.log(data);
+            console.log(data);
             $('<span></span>').attr('class','items sup'+x).appendTo('#Div3');
             $('<span></span>').attr('class','item-contenido suport'+x).appendTo('.sup'+x);
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
@@ -51,13 +52,29 @@ function cat_shop(correcto,consulta){
             $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
                 x++;
         }
+        pagination(filtrado1);
     })
     });
     sessionStorage.clear();
    
 }
-function pagination(){
-    var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=countProds";
+function pagination(correcto,consulta,filtrado1){
+    var nom=localStorage.getItem('nombre');
+    var marcas=sessionStorage.getItem('marcas');
+    var tallas=sessionStorage.getItem('tallas');
+    if(correcto==1){
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=countProdsSearch&nom="+nom+"&consulta="+consulta;
+        $('#pagiShop').empty();
+    }else if(correcto!=1){
+    if (filtrado1!=1){
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=countProds&nom="+nom;
+        $('#pagiShop').empty();
+
+    }else if (filtrado1==1){
+        var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=countProdsFilters&nom="+nom+"&marcas="+marcas+"&tallas="+tallas; 
+        $('#pagiShop').empty();
+    }
+    }
     $.ajax({
         type:'GET',
         dataType:'JSON',
@@ -67,11 +84,42 @@ function pagination(){
         },
         success:(function(data){
             
+            localStorage.setItem('offset',0);
+            var productos='';
+            var pages='';
+            var paginas='';
+            var siPages='';
+            for (row in data){
+                productos=data[row].prod;       
+            }
+            pages= productos/3;
+            if (pages<0.5){
+                pages=1;
+            }
+            paginas =Math.round(pages);
+            if(paginas==1){
+                paginas=1;
+            }
+            paginas =Math.round(pages);
+
+            if (paginas>0){
+                siPages=1;
+                localStorage.setItem('confirm',siPages);
+            }
+            $('#pagiShop').bootpag({
+                total:paginas,
+                maxVisible: paginas,
+            }).on('page', function(event,num){
+                var offset= 3 *(num-1);
+                localStorage.setItem('offset',offset);
+                cat_shop();
+            });
+            
         })
     });
 }
 function validaFilters(){
-    sessionStorage.clear();
+    sessionStorage.setItem('filtrado',0);
     var marca="";
     var talla="";
         if (document.filtrosShop.marca1.checked){
@@ -130,15 +178,17 @@ function validaFilters(){
         if(marca=="" && talla==""){
             filtrado=0;
         }
-
+        console.log('esto es filtrado en filters '+filtrado);
+        // localStorage.setItem('filtrado1',filtrado);
         $('body').on('click','#aplicar',function(){
             console.log("Hago clcik");
             sessionStorage.setItem('filtrado',filtrado);
             sessionStorage.setItem('marcas',marca);
             sessionStorage.setItem('tallas',talla);
+            pagination(filtrado);
             window.location.href="index.php?page=list_shop";
         });
-
+        
 
 }
 function remove_filters(){
@@ -152,6 +202,7 @@ function remove_filters(){
 function details(){
 $('body').on("click",".details",function(){
 var codigo = this.getAttribute('id');
+alert(codigo);
     $.ajax({
         type: "GET",
         dataType: "JSON",
@@ -174,6 +225,7 @@ var codigo = this.getAttribute('id');
             console.log(data);
             $('#Div3').empty();
             $('.Head').empty();
+            $('#pagiShop').empty();
             // for (row in data){
                 //Primera fila
                 $('<div></div>').attr('class','fila cabecera1').appendTo('#Div3');
@@ -327,6 +379,7 @@ function buscar(){
             var correcto=1;
             // buscar(correcto,valor);
             cat_shop(correcto,valor);
+            pagination(correcto,valor);
         }else{
             correcto=0;
             cat_shop(correcto);
@@ -338,9 +391,11 @@ function buscar(){
 function load_divs(){
     $('<div></div>').attr('id','DivHead').appendTo('#headShop');
     $('<div></div>').attr('id','Div3').appendTo('#listS');
+    $('<div></div>').attr('id','pagiShop').appendTo('#listS');
     cat_shop();
     details();
     remove_filters();
+    pagination();
     // buscar();
 
 }
@@ -348,6 +403,7 @@ $(document).ready(function(){
 load_divs();
 efectos_shop();
 buscar();
+
 
 });
 /////////DEBUG ERROR AJAX//////////////

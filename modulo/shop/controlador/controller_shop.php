@@ -9,7 +9,8 @@ switch ($_GET['op']){
             try{
     
                 $daoshop = new DAOshop();
-                $rdo = $daoshop->shop($_GET['nom']);
+                $rdo = $daoshop->shop($_GET['nom'] ,$_GET['offset']);
+               
         
             }catch(Exception $e){
                 $callback = 'index.php?page=503';
@@ -31,7 +32,7 @@ switch ($_GET['op']){
                 
             }
     
-            break;
+            // break;
    
         break;
         case "details":
@@ -58,9 +59,10 @@ switch ($_GET['op']){
             $nombres=$_GET['nom'];
             $marca=$_GET['marcas'];
             $talla=$_GET['tallas'];
+            $offset=$_GET['offset'];
             try{    
                 $daoshop = new DAOshop();
-                $rdo = $daoshop->filters($nombres,$marca,$talla);
+                $rdo = $daoshop->filters($nombres,$marca,$talla,$offset);
                 // echo json_encode($rdo);
                 // exit;
             }catch (Exception $e){
@@ -79,12 +81,75 @@ switch ($_GET['op']){
             }
                 break;
         case "countProds":
-            
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->countProd($_GET['nom']);
+            }catch (Exception $e){
+                echo json_encode("error");
+                exit;
+            }
+            if(!$rdo){
+                echo json_encode("Error");
+                exit;
+            }else{                                                                                  
+                // echo json_encode($rdo);
+                // exit;
+                $arry=array();
+                foreach ($rdo as $value) {
+                    array_push($arry, $value);
+                }
+                echo json_encode($arry);
+                }   
             break;
+            case "countProdsFilters":
+                $nombres=$_GET['nom'];
+                $marca=$_GET['marcas'];
+                $talla=$_GET['tallas'];
+                try{
+                    $daoshop = new DAOshop();
+                    $rdo = $daoshop->countProd($nombres,$marca,$talla);
+                }catch (Exception $e){
+                    echo json_encode("error");
+                    exit;
+                }
+                if(!$rdo){
+                    echo json_encode("Error");
+                    exit;
+                }else{                                                                                  
+                    // echo json_encode($rdo);
+                    // exit;
+                    $arry=array();
+                    foreach ($rdo as $value) {
+                        array_push($arry, $value);
+                    }
+                    echo json_encode($arry);
+                    }   
+                break;
+                case "countProdsSearch":
+                    try{
+                        $daoshop = new DAOshop();
+                        $rdo = $daoshop->countSearch($_GET['nom'],$_GET['consulta']);
+                    }catch (Exception $e){
+                        echo json_encode("error");
+                        exit;
+                    }
+                    if(!$rdo){
+                        echo json_encode("Error");
+                        exit;
+                    }else{                                                                                  
+                        // echo json_encode($rdo);
+                        // exit;
+                        $arry=array();
+                        foreach ($rdo as $value) {
+                            array_push($arry, $value);
+                        }
+                        echo json_encode($arry);
+                        }   
+                    break;
         case "search":
             try{
                 $daoshop = new DAOshop();
-                $rdo = $daoshop->search($_GET['consulta'],$_GET['nom']);
+                $rdo = $daoshop->search($_GET['consulta'],$_GET['nom'],$_GET['offset']);
             }catch (Exception $e){
                 echo json_encode("error");
                 exit;
