@@ -51,8 +51,6 @@ Esta aplicación simula una tienda web sobre ropa, pudiendo ser un símil de las
             <tr>
                 <th>Api Rest</th>
                 <td>Finally, in the REST API section, we have consumed the information from an external API which will show us information from the books related to the category we are in.</td>
-            </tr>
-                
-
+            </tr>            
         </tbody>
     </table>
