@@ -1,5 +1,5 @@
 #  APLICACÍON WEB KIWEAR
-Esta aplicación simula una tienda web sobre ropa, pudiendo ser un símil de las páginas famosas de Zalando, SVD (SiVasDescalzo) o Shein entre otras.
+This application simulates a web store about clothes, being able to be a simile of the famous pages of Zalando, SVD (SiVasDescalzo) or Shein among others.
     <h2>Visual result of the treated sections</h2>
     <h4>HOMEPAGE</h4>
     <img src="https://user-images.githubusercontent.com/75810680/109743968-d52fe800-7bd1-11eb-91c9-5ed91c7e3bc9.png" width="1000px" >
