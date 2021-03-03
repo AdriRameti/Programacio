@@ -56,16 +56,16 @@ This application simulates a web store about clothes, being able to be a simile 
     </table>
     <h4>Built with:</h4>
     <ul>
-        <li>JAVASCRIPT</li>
-        <li>PHP</li>
-        <li>MYSQLI</li>
-        <li>HTML</li>
-        <li>CSS</li>
+        <li><a href="https://www.javascript.com/">JAVASCRIPT</a></li>
+        <li><a href="https://www.php.net/">PHP</a></li>
+        <li><a href="https://www.mysql.com/">MYSQLI</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/HTML">HTML<a/></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS">CSS</a></li>
     </ul>
     <h4>Other technologies and extensions</h4>
     <ul>
-        <li>Extension JQUERY</li>
-        <li>Extension BOOTSTRAP</li>
-        <li>Extension MUURII for animation</li>
-        <li>MYSQLI WORCKBENCH</li>
+        <li><a href="https://jquery.com/">Extension JQUERY</a></li>
+        <li><a href="https://getbootstrap.com/">Extension BOOTSTRAP</a></li>
+        <li><a href="https://muuri.dev/">Extension MUURII for animation</a></li>
+        <li><a href="https://www.mysql.com/products/workbench/">MYSQLI WORCKBENCH</a></li>
     </ul>
