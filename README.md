@@ -54,3 +54,17 @@ Esta aplicación simula una tienda web sobre ropa, pudiendo ser un símil de las
             </tr>            
         </tbody>
     </table>
+    <h4>Built with:</h4>
+    <ul>
+        <li>JAVASCRIPT</li>
+        <li>PHP</li>
+        <li>MYSQLI</li>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+    <h4>Other technologies and extensions</h4>
+    <ul>
+        <li>Extension JQUERY</li>
+        <li>Extension BOOTSTRAP</li>
+        <li>Extension MUURII for animation</li>
+    </ul>
