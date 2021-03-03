@@ -67,4 +67,5 @@ Esta aplicación simula una tienda web sobre ropa, pudiendo ser un símil de las
         <li>Extension JQUERY</li>
         <li>Extension BOOTSTRAP</li>
         <li>Extension MUURII for animation</li>
+        <li>MYSQLI WORCKBENCH</li>
     </ul>
