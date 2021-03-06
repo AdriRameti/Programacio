@@ -413,9 +413,12 @@ function buscar(){
         }
     });
 }
-// function api(){
-
-// }
+function rediLogin(){
+    $(document).on('click','.icono_login',function(){
+    window.location.href="index.php?page=login";
+    return false;
+    });
+    }
 function load_divs(){
     $('<div></div>').attr('id','DivHead').appendTo('#headShop');
     $('<div></div>').attr('id','Div3').appendTo('#listS');
@@ -431,7 +434,7 @@ $(document).ready(function(){
 load_divs();
 efectos_shop();
 buscar();
-
+rediLogin();
 
 });
 /////////DEBUG ERROR AJAX//////////////

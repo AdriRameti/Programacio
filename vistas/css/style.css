@@ -3,11 +3,6 @@
 	padding: 0px;
 	box-sizing: border-box;
 }
-/* .container_list{
-	width: 90%;
-	max-width: 1500 px;
-	margin:auto;
-} */
 #busqueda2{
 	position: absolute;
 	left: 650px;;
@@ -20,6 +15,84 @@
 	border: none; */
 	text-align: center;
 	font-size: 16px;
+}
+.icono_login{
+	color: white;
+	position: absolute;
+	top: 15px;
+}
+
+.icono_login:hover{
+	cursor: pointer;
+}
+/******************************************************************************/
+/*******************Login/Register*********************************************/
+.contenedor_register{
+	width: 100%;
+	padding: 15px;
+}
+.formulario_register{
+	background: rgba(0, 102, 161, 0.267);
+	/* margin-top: 150px; */
+	padding: 3px;
+}
+form h1{
+	text-align: center;
+	color: #1a2537;
+	font-size: 40px;
+	
+}
+input[type="text"],
+input[type="password"]{
+	font-size: 20px;
+	background-color: white;
+	width: 82%;
+	padding: 10px;
+	border: none;
+}
+.input_contenedor{
+	margin-bottom: 15px;
+	border: 1px solid #aaa;
+	background-color: white;
+}
+.icono{
+	min-width: 50px;
+	text-align: center;
+	color: #999;
+}
+.boton_register{
+	border: none;
+	width: 100%;
+	color: white;
+	font-size: 20px;
+	background: #1a2537;
+	padding: 15px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.boton_register:hover{
+	background: cadetblue;
+}
+form p{
+text-align: center;    
+}
+.link_regist{
+	text-decoration: none;
+	color: #1a2537;
+	font-weight: 600;
+}
+.link_regist:hover{
+	color:cadetblue;
+	cursor: pointer;
+}
+@media (min-width:768px)
+{
+	.formulario_register{
+		margin:auto;
+		width: 500px;
+		margin-top: 150px;
+		border-radius: 2%
+	}
 }
 /*********************************************************************/
 /********Filtros**************************************************/
@@ -461,7 +534,7 @@ body {
   }
   
   .back-to-top i {
-	font-size: 24px;
+	font-size: 50px;
 	position: absolute;
 	top: 8px;
 	left: 8px;
@@ -572,7 +645,7 @@ body {
   }
   
   .nav-menu .drop-down li {
-	min-width: 180px;
+	min-width: 110px;
 	position: relative;
   }
   

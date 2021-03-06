@@ -135,6 +135,12 @@ function buscar2(){
   return false;
   });
   }
+  function rediLogin(){
+    $(document).on('click','.icono_login',function(){
+    window.location.href="index.php?page=login";
+    return false;
+    });
+    }
   function cargar_divs(){
   $('<div></div>').attr('id','Div1').attr('class','row portfolio-container').attr('data-aos','fade-up').attr('data-aos-easing','ease-in-out').attr('data-aos-duration','500').appendTo('#categories');
     cargar_cat_slider();
@@ -143,5 +149,6 @@ function buscar2(){
   $(document).ready(function(){
   cargar_divs();
   rediShop();
+  rediLogin();
   buscar2();
   });
