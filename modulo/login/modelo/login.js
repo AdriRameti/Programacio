@@ -3,29 +3,34 @@ function validate_login(){
     if(document.formulario_login.email.value.length==0){
         document.getElementById('error_email').innerHTML="*Correo electrónico incorrecto";
         document.formulario_login.email.focus();
+        return 0;
         
     }else if(document.formulario_login.email.value.length!=0){
         document.getElementById('error_email').innerHTML="";
     }
     if(!valida_email.test(document.formulario_login.email.value)){
         document.getElementById('error_email').innerHTML="*El formato del correo electrónico es incorrecto";
-        document.formulario_register.email.focus();
+        document.formulario_login.email.focus();
+        return 0;
     }
     if(document.formulario_login.contrase.value.length==0){
         document.getElementById('error_contra').innerHTML="*Contraseña incorrecta";
         document.formulario_login.contrase.focus();
+        return 0;
         
     }else if(document.formulario_login.contrase.value.length!=0){
         document.getElementById('error_contra').innerHTML="";
     }
-        document.formulario_login.sumbit();
-        document.formulario_login.action="index.php?page=controller_login&op=showLogin";
+        // document.formulario_login.sumbit();
+        // document.formulario_login.action="index.php?page=controller_login&op=showLogin";
+        // document.formulario_register.action=login();
 }
 function validate_register(){
     var valida_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 if(document.formulario_register.nombre.value.length==0){
     document.getElementById('error_nombre').innerHTML="*Introduzca su nombre";
     document.formulario_register.nombre.focus();
+    return 0;
     
 }else if(document.formulario_register.nombre.value.length!=0){
     document.getElementById('error_nombre').innerHTML="";
@@ -33,6 +38,7 @@ if(document.formulario_register.nombre.value.length==0){
 if(document.formulario_register.email.value.length==0){
     document.getElementById('error_email').innerHTML="*Introduzca su correo electrónico";
     document.formulario_register.email.focus();
+    return 0;
     
 }else if(document.formulario_register.email.value.length!=0){
     document.getElementById('error_email').innerHTML="";
@@ -40,16 +46,18 @@ if(document.formulario_register.email.value.length==0){
 if(!valida_email.test(document.formulario_register.email.value)){
     document.getElementById('error_email').innerHTML="*El formato del correo electrónico es incorrecto";
     document.formulario_register.email.focus();
+    return 0;
 }
 if(document.formulario_register.contrase.value.length==0){
     document.getElementById('error_contra').innerHTML="*Introduzca una contraseña segura";
     document.formulario_register.contrase.focus();
+    return 0;
     
 }else if(document.formulario_register.contrase.value.length!=0){
     document.getElementById('error_contra').innerHTML="";
 }
-    document.formulario_register.sumbit();
-    document.formulario_register.action="index.php?page=controller_login&op=showLogin";
+    // document.formulario_register.sumbit();
+    // document.formulario_register.action="index.php?page=controller_login&op=showLogin";
 }
 
 function login_view(){
@@ -74,7 +82,7 @@ function login_view(){
                     $('<i></i>').attr('class','fas fa-key icono').appendTo('.log4');
                     $('<input></input>').attr('type','password').attr('id','contrase').attr('name','contrase').attr('placeholder','Contraseña').attr('class','caja_texto').appendTo('.log4');
                     $('<span></span>').attr('id','error_contra').attr('class','error_contra validar').appendTo('.log4');
-                    $('<input></input>').attr('type','button').attr('value','Registar').attr('class','boton_register').attr('onclick','validate_register()').appendTo('.log2');
+                    $('<input></input>').attr('type','button').attr('value','Registar').attr('class','boton_register').attr('id','btn_register').attr('onclick','validate_register()').appendTo('.log2');
                     $('<p>Al registrarte, aceptas nuestas Condiciones de uso y Políticas de privacidad</p>').appendTo('.log2');
                     $('<p>¿Ya tienes una cuenta?</p>').attr('class','redi').appendTo('.log2');
                     $('<a>Iniciar Sesion</a>').attr('class','link_regist logeo').appendTo('.redi');
@@ -100,7 +108,7 @@ function show_logins(){
         $('<i></i>').attr('class','fas fa-key icono').appendTo('.log4');
         $('<input></input>').attr('type','password').attr('id','contrase').attr('name','contrase').attr('placeholder','Contraseña').attr('class','caja_texto').appendTo('.log4');
         $('<span></span>').attr('id','error_contra').attr('class','error_contra validar').appendTo('.log4');
-        $('<input></input>').attr('type','button').attr('value','Login').attr('class','boton_register').attr('onclick','validate_login()').appendTo('.log2');
+        $('<input></input>').attr('type','button').attr('value','Login').attr('class','boton_register').attr('id','btn_login').attr('onclick','validate_login()').appendTo('.log2');
         $('<p>Al registrarte, aceptas nuestas Condiciones de uso y Políticas de privacidad</p>').appendTo('.log2');
         $('<p>¿No tienes una cuenta?</p>').attr('class','redi').appendTo('.log2');
         $('<a>Registrate</a>').attr('class','link_regist registro').appendTo('.redi');
@@ -126,16 +134,29 @@ function show_registers(){
         $('<i></i>').attr('class','fas fa-key icono').appendTo('.log4');
         $('<input></input>').attr('type','password').attr('id','contrase').attr('name','contrase').attr('placeholder','Contraseña').attr('class','caja_texto').appendTo('.log4');
         $('<span></span>').attr('id','error_contra').attr('class','error_contra validar').appendTo('.log4');
-        $('<input></input>').attr('type','button').attr('value','Registar').attr('class','boton_register').attr('onclick','validate_register()').appendTo('.log2');
+        $('<input></input>').attr('type','button').attr('value','Registar').attr('class','boton_register').attr('id','btn_register').attr('onclick','validate_register()').appendTo('.log2');
         $('<p>Al registrarte, aceptas nuestas Condiciones de uso y Políticas de privacidad</p>').appendTo('.log2');
         $('<p>¿Ya tienes una cuenta?</p>').attr('class','redi').appendTo('.log2');
         $('<a>Iniciar Sesion</a>').attr('class','link_regist logeo').appendTo('.redi');
 
     });
 }
-function login(){
-    $('.logeo').sumbit(function(e){
+function register(){
+    $(document).on('click','#btn_register',function(e){
+        console.log('entro register');
         e.preventDefault();
+        if (validate_register() !=0){
+            console.log('Entro register sin fallos');
+        }
+    });
+}
+function login(){
+    $(document).on('click','#btn_login',function(e){
+        console.log('entroo');
+        e.preventDefault();
+        if (validate_login() !=0){
+            console.log('entro login');
+        }
         
     });
 }
@@ -147,4 +168,6 @@ function load_div(){
 }
 $(document).ready(function(){
 load_div();
+login();
+register();
 });
