@@ -84,7 +84,7 @@ function login_view(){
                     $('<span></span>').attr('id','error_contra').attr('class','error_contra validar').appendTo('.log4');
                     $('<input></input>').attr('type','button').attr('value','Registar').attr('class','boton_register').attr('id','btn_register').attr('onclick','validate_register()').appendTo('.log2');
                     $('<p>Al registrarte, aceptas nuestas Condiciones de uso y Políticas de privacidad</p>').appendTo('.log2');
-                    $('<p>¿Ya tienes una cuenta?</p>').attr('class','redi').appendTo('.log2');
+                    $('<p>¿Ya tienes una cuenta? </p>').attr('class','redi').appendTo('.log2');
                     $('<a>Iniciar Sesion</a>').attr('class','link_regist logeo').appendTo('.redi');
                     show_logins();
                     show_registers(); 
@@ -110,7 +110,7 @@ function show_logins(){
         $('<span></span>').attr('id','error_contra').attr('class','error_contra validar').appendTo('.log4');
         $('<input></input>').attr('type','button').attr('value','Login').attr('class','boton_register').attr('id','btn_login').attr('onclick','validate_login()').appendTo('.log2');
         $('<p>Al registrarte, aceptas nuestas Condiciones de uso y Políticas de privacidad</p>').appendTo('.log2');
-        $('<p>¿No tienes una cuenta?</p>').attr('class','redi').appendTo('.log2');
+        $('<p>¿No tienes una cuenta? </p>').attr('class','redi').appendTo('.log2');
         $('<a>Registrate</a>').attr('class','link_regist registro').appendTo('.redi');
 
     });
@@ -136,7 +136,7 @@ function show_registers(){
         $('<span></span>').attr('id','error_contra').attr('class','error_contra validar').appendTo('.log4');
         $('<input></input>').attr('type','button').attr('value','Registar').attr('class','boton_register').attr('id','btn_register').attr('onclick','validate_register()').appendTo('.log2');
         $('<p>Al registrarte, aceptas nuestas Condiciones de uso y Políticas de privacidad</p>').appendTo('.log2');
-        $('<p>¿Ya tienes una cuenta?</p>').attr('class','redi').appendTo('.log2');
+        $('<p>¿Ya tienes una cuenta? </p>').attr('class','redi').appendTo('.log2');
         $('<a>Iniciar Sesion</a>').attr('class','link_regist logeo').appendTo('.redi');
 
     });
@@ -147,6 +147,16 @@ function register(){
         e.preventDefault();
         if (validate_register() !=0){
             console.log('Entro register sin fallos');
+            var data = $('#formulario_register').serialize(); 
+            $.ajax({
+                type:'POST',
+                data: data,
+                url: 'modulo/login/controlador/controller_login.php?op=register',
+                success:(function(respuesta){
+                    window.location.href="index.php?page=homepage";
+
+                })
+            });
         }
     });
 }
