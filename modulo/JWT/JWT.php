@@ -33,10 +33,10 @@ class JWT {
     
     private function setAlgorithm($algorithm) {
         switch ($algorithm[0]) {
-            case n:
+            case 'n':
                 $this->alg = 'plaintext';
                 break;
-            case H:
+            case 'H':
                 $this->alg = 'HMAC';
                 break;
             // By now, the only native is HMAC
@@ -51,7 +51,7 @@ class JWT {
             default: exit("RSA and ECDSA not implemented yet!");
         }
         switch ($algorithm[2]) {
-            case a:
+            case 'a':
                 $this->alg = 'plaintext';
                 break;
             case 2:
