@@ -14,7 +14,7 @@ function encode(){
     $payload = '{
         "iat":time(), 
         "exp":time() + (60*60),
-        "name":"adrian"
+        "name":'.$_POST['nombre'].'
     }';
 
     $JWT = new JWT;
