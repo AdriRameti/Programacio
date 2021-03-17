@@ -156,11 +156,12 @@ function register(){
                     if(respuesta==1){
                         // console.log(window.location.href); Como saber en que url estamos en js
                         $('<br></br>').appendTo('.log5');
-                        $('<a>* Ya existe este usuario</a>').attr('id','error_usuario').attr('class','error_usuario validar').appendTo('.log5');
+                        $('<span></span>').attr('class','log12').appendTo('.log5');
+                        $('<a>* Ya existe este usuario</a>').attr('id','error_usuario').attr('class','error_usuario validar').appendTo('.log12');
                        
                         
                     }else{
-                        window.location.href="index.php?page=homepage";
+                        window.location.href="index.php?page=login";
 
                     }
                     
@@ -176,6 +177,15 @@ function login(){
         e.preventDefault();
         if (validate_login() !=0){
             console.log('entro login');
+            var data = $('#formulario_login').serialize(); 
+            $.ajax({
+                type:'POST',
+                url:'modulo/login/controlador/controller_login.php?op=login',
+                data: data,
+                success:(function(respuest){
+                    
+                })
+            });
         }
         
     });
