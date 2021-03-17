@@ -32,8 +32,20 @@ switch ($_GET['op']){
     case 'register':
         // include ("modulo/login/modelo/valida_php.php");
         if ($_POST){
-            // $valide=validaRegister();
-            // if ($valide){
+            try{
+                $daologin = new DAOlogin();
+                $rdo = $daologin->valida_usuario($_POST['email'],$_POST['nombre']);
+                // echo json_encode($rdo);
+                // exit();
+            }catch (Exception $e){
+                $callback = 'index.php?page=503';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }
+            if ($rdo){
+                $validar=1;
+                echo json_encode($validar);
+                exit();
+            }else{
                 try{
                     $daologin = new DAOlogin();
                     $rdo = $daologin->insert_usuarios($_POST['email'],$_POST['nombre'],$_POST['contrase']);
@@ -47,6 +59,8 @@ switch ($_GET['op']){
                 }else{
                     echo json_encode('Usuario añadido');
                 }
+            }
+
             // }
         }
         break;

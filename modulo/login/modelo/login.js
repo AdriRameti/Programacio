@@ -153,7 +153,17 @@ function register(){
                 data: data,
                 url: 'modulo/login/controlador/controller_login.php?op=register',
                 success:(function(respuesta){
-                    window.location.href="index.php?page=homepage";
+                    if(respuesta==1){
+                        // console.log(window.location.href); Como saber en que url estamos en js
+                        $('<br></br>').appendTo('.log5');
+                        $('<a>* Ya existe este usuario</a>').attr('id','error_usuario').attr('class','error_usuario validar').appendTo('.log5');
+                       
+                        
+                    }else{
+                        window.location.href="index.php?page=homepage";
+
+                    }
+                    
 
                 })
             });

@@ -24,4 +24,11 @@ class DAOlogin{
         connect::close($conexion);
         return $res;
     }
+    function valida_usuario($email,$nombre){
+        $sql = "SELECT * FROM usuario WHERE correo='$email'";
+        $conexion = connect::con();
+        $res = mysqli_query($conexion, $sql)->fetch_object();
+        connect::close($conexion);
+        return $res;
+    }
 }
