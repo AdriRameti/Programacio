@@ -31,10 +31,10 @@ class DAOlogin{
         connect::close($conexion);
         return $res;
     }
-    function select_usuarios($nombre){
-        $sql = "SELECT * FROM usuario WHERE nombre='$nombre'";
+    function select_usuarios($email){
+        $sql = "SELECT * FROM usuario WHERE correo='$email'";
         $conexion = connect::con();
-        $res = mysqli_query($conexion, $sql);
+        $res = mysqli_query($conexion, $sql)->fetch_object();
         connect::close($conexion);
         return $res;
     }

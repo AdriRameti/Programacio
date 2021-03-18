@@ -1,9 +1,12 @@
 <?php
 $path=$_SERVER['DOCUMENT_ROOT'] ."/Ejercicios_PHP";
 include ($path  ."/modulo/login/modelo/DAOlogin.php"); 
+include ($path ."/modelo/utils/middleware_jwt.php");
+include ($path ."/modelo/clases/JWT.php");
+
 switch ($_GET['op']){
     case 'Login':
-        // include ("modulo/login/vista/login.html");
+        include ("modulo/login/vista/login.html");
         break;
     case 'showLogin':
         try{
@@ -62,25 +65,32 @@ switch ($_GET['op']){
         }
         break;
         case 'login':
-            try{
-                $daologin = new DAOlogin();
-                $rdo = $daologin->select_usuarios($_POST['nombre']);
-            }catch (Exception $e){
-                $callback = 'index.php?page=503';
-                die('<script>window.location.href="'.$callback .'";</script>');
-            }
-            if(!$rdo){
-                echo json_encode('No hay usuarios');
-                exit();
-            }else{
-                $valor = get_object_vars($rdo);
-                if(password_verify($_POST['contrase'],$valor['contrasenya'])){
-                    $token = encode($_POST['nombre']);
-                    echo json_encode($token);
-                }else{
-                    echo json_encode('Los datos no coinciden');
+            if ($_POST){
+                try{
+                    $daologin = new DAOlogin();
+                    $rdo = $daologin->select_usuarios($_POST['email']);
+                }catch (Exception $e){
+                    $callback = 'index.php?page=503';
+                    die('<script>window.location.href="'.$callback .'";</script>');
                 }
-
+                if(!$rdo){
+                    echo json_encode('No hay usuarios');
+                    exit();
+                }else{
+                    // $valor = get_object_vars($rdo);
+                    // echo json_encode($valor['contrasenya']);
+                    // exit();
+                    $valor = get_object_vars($rdo);
+                    if(password_verify($_POST['contrase'],$valor['contrasenya'])){
+                        $usuario=$valor['nombre'];
+                        $token = encode($usuario);
+                        echo json_encode($token);
+                        // echo json_encode($valor['nombre']);
+                    }else{
+                        echo json_encode('Los datos no coinciden');
+                    }
+                }
             }
+            
             break;
 }

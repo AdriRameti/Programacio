@@ -173,13 +173,15 @@ function login(){
         e.preventDefault();
         if (validate_login() !=0){
             console.log('entro login');
-            var data = $('#formulario_login').serialize(); 
+            var datos = $('#formulario_login').serialize(); 
+            alert(datos);
             $.ajax({
                 type:'POST',
+                data: datos,
                 url:'modulo/login/controlador/controller_login.php?op=login',
-                data: data,
+                
                 success:(function(respuest){
-                    
+                    console.log(respuest);
                 })
             });
         }
