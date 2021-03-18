@@ -30,13 +30,10 @@ switch ($_GET['op']){
         }
     break;
     case 'register':
-        // include ("modulo/login/modelo/valida_php.php");
         if ($_POST){
             try{
                 $daologin = new DAOlogin();
-                $rdo = $daologin->valida_usuario($_POST['email'],$_POST['nombre']);
-                // echo json_encode($rdo);
-                // exit();
+                $rdo = $daologin->valida_usuario($_POST['email']);
             }catch (Exception $e){
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="'.$callback .'";</script>');
@@ -64,4 +61,26 @@ switch ($_GET['op']){
             // }
         }
         break;
+        case 'login':
+            try{
+                $daologin = new DAOlogin();
+                $rdo = $daologin->select_usuarios($_POST['nombre']);
+            }catch (Exception $e){
+                $callback = 'index.php?page=503';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }
+            if(!$rdo){
+                echo json_encode('No hay usuarios');
+                exit();
+            }else{
+                $valor = get_object_vars($rdo);
+                if(password_verify($_POST['contrase'],$valor['contrasenya'])){
+                    $token = encode($_POST['nombre']);
+                    echo json_encode($token);
+                }else{
+                    echo json_encode('Los datos no coinciden');
+                }
+
+            }
+            break;
 }

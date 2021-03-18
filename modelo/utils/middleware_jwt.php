@@ -1,13 +1,13 @@
 <?php
-function encode($_POST['nombre']){
-    require_once "JWT.php";
+function encode($usuario){
+    require_once ("/modelo/clases/JWT.php");
     $header = '{"typ":"JWT", "alg":"HS256"}';
     $secret = 'maytheforcebewithyou';
 
     $payload = '{
         "iat":time(), 
         "exp":time() + (60*60),
-        "name":'.$_POST['nombre'].'
+        "name":'.$usuario.'
     }';
 
     $JWT = new JWT;

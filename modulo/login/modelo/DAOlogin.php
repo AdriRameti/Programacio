@@ -3,7 +3,7 @@ $path=$_SERVER['DOCUMENT_ROOT']  ."/Ejercicios_PHP";
 include ($path ."/modelo/connect.php");
 class DAOlogin{
     function comprobarUser(){
-        $sql="SELECT count(*) AS usuario from usuario";
+        $sql="SELECT * from usuario";
         $conexion= connect::con();
         $res= mysqli_query($conexion,$sql);
         connect::close($conexion);
@@ -24,10 +24,17 @@ class DAOlogin{
         connect::close($conexion);
         return $res;
     }
-    function valida_usuario($email,$nombre){
+    function valida_usuario($email){
         $sql = "SELECT * FROM usuario WHERE correo='$email'";
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql)->fetch_object();
+        connect::close($conexion);
+        return $res;
+    }
+    function select_usuarios($nombre){
+        $sql = "SELECT * FROM usuario WHERE nombre='$nombre'";
+        $conexion = connect::con();
+        $res = mysqli_query($conexion, $sql);
         connect::close($conexion);
         return $res;
     }

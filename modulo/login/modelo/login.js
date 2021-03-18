@@ -21,9 +21,6 @@ function validate_login(){
     }else if(document.formulario_login.contrase.value.length!=0){
         document.getElementById('error_contra').innerHTML="";
     }
-        // document.formulario_login.sumbit();
-        // document.formulario_login.action="index.php?page=controller_login&op=showLogin";
-        // document.formulario_register.action=login();
 }
 function validate_register(){
     var valida_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
@@ -56,8 +53,7 @@ if(document.formulario_register.contrase.value.length==0){
 }else if(document.formulario_register.contrase.value.length!=0){
     document.getElementById('error_contra').innerHTML="";
 }
-    // document.formulario_register.sumbit();
-    // document.formulario_register.action="index.php?page=controller_login&op=showLogin";
+
 }
 
 function login_view(){
