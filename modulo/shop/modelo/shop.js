@@ -423,6 +423,8 @@ function load_divs(){
     $('<div></div>').attr('id','DivHead').appendTo('#headShop');
     $('<div></div>').attr('id','Div3').appendTo('#listS');
     $('<div></div>').attr('id','pagiShop').appendTo('#listS');
+    // var localizacion = 'index.php?page=list_shop';
+    // localStorage.setItem('localizacion',localizacion);
     cat_shop();
     details();
     remove_filters();

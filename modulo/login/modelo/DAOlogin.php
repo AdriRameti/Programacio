@@ -38,4 +38,11 @@ class DAOlogin{
         connect::close($conexion);
         return $res;
     }
+    function select_usuario_nombre($nombre){
+        $sql = "SELECT nombre,avatar FROM usuario WHERE nombre='$nombre'";
+        $conexion = connect::con();
+        $res = mysqli_query($conexion, $sql)->fetch_object();
+        connect::close($conexion);
+        return $res;
+    }
 }

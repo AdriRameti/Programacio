@@ -1,6 +1,8 @@
 <?php
+include_once ('JWT.php');
+$JWT = new JWT;
 function encode($usuario){
-    require_once "/modelo/clases/JWT.php";
+    // include_once ('JWT.php');
     $header = '{"typ":"JWT", "alg":"HS256"}';
     $secret = 'maytheforcebewithyou';
 
@@ -9,14 +11,14 @@ function encode($usuario){
         "exp":'.time() + (60*60).',
         "name":'.$usuario.'
     }';
-
-    $JWT = new JWT;
+    global $JWT;
     $token = $JWT->encode($header, $payload, $secret);
     return $token;
 }
    function decode($token){
     $secret = 'maytheforcebewithyou';
-    $JWT = new JWT;
+    // $JWT = new JWT;
+    global $JWT;
     $json = $JWT->decode($token, $secret);
     return $json;
    }

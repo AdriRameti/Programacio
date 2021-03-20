@@ -143,7 +143,9 @@ function buscar2(){
     }
   function cargar_divs(){
   $('<div></div>').attr('id','Div1').attr('class','row portfolio-container').attr('data-aos','fade-up').attr('data-aos-easing','ease-in-out').attr('data-aos-duration','500').appendTo('#categories');
-    cargar_cat_slider();
+  // var localizacion = 'index.php?page=homepage';
+  // localStorage.setItem('localizacion',localizacion);  
+  cargar_cat_slider();
     cargar_cat();
   }
   $(document).ready(function(){

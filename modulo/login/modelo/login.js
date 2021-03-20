@@ -169,19 +169,26 @@ function register(){
 }
 function login(){
     $(document).on('click','#btn_login',function(e){
-        console.log('entroo');
         e.preventDefault();
         if (validate_login() !=0){
-            console.log('entro login');
             var datos = $('#formulario_login').serialize(); 
-            alert(datos);
             $.ajax({
                 type:'POST',
                 data: datos,
                 url:'modulo/login/controlador/controller_login.php?op=login',
                 
-                success:(function(respuest){
-                    console.log(respuest);
+                success:(function(respuesta){
+                    // console.log(respuesta);
+                    if (respuesta==1){
+                        $('<span></span>').attr('class','log15').appendTo('.log3');
+                        $('<a>* No existe este usuario</a>').attr('id','error_usuario').attr('class','error_usuario validar').appendTo('.log15');
+                    }else{
+                        var token= respuesta;
+                        // console.log(token);
+                    localStorage.setItem('token',token);
+                    window.location.href='index.php?page=homepage';
+                    
+                    }
                 })
             });
         }

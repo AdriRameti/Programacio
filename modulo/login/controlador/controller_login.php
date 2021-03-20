@@ -1,8 +1,9 @@
 <?php
 $path=$_SERVER['DOCUMENT_ROOT'] ."/Ejercicios_PHP";
 include ($path  ."/modulo/login/modelo/DAOlogin.php"); 
-include ($path ."/modelo/utils/middleware_jwt.php");
-include ($path ."/modelo/clases/JWT.php");
+include ($path ."/modelo/util/middleware.php");
+
+// include ($path ."/modelo/clases/JWT.php");
 
 switch ($_GET['op']){
     case 'Login':
@@ -68,29 +69,70 @@ switch ($_GET['op']){
             if ($_POST){
                 try{
                     $daologin = new DAOlogin();
-                    $rdo = $daologin->select_usuarios($_POST['email']);
+                    $rdo = $daologin->valida_usuario($_POST['email']);
+                }catch (Exception $e){
+                    $callback = 'index.php?page=503';
+                    die('<script>window.location.href="'.$callback .'";</script>');
+                }
+                if ($rdo){
+                    try{
+                        $daologin = new DAOlogin();
+                        $rdo = $daologin->select_usuarios($_POST['email']);
+                    }catch (Exception $e){
+                        $callback = 'index.php?page=503';
+                        die('<script>window.location.href="'.$callback .'";</script>');
+                    }
+                    if(!$rdo){
+                        echo json_encode('No hay usuarios');
+                        exit();
+                    }else{
+                        // $valor = get_object_vars($rdo);
+                        // echo json_encode($valor['contrasenya']);
+                        // exit();
+                        $valor = get_object_vars($rdo);
+                        if(password_verify($_POST['contrase'],$valor['contrasenya'])){
+                            $usuario=$valor['nombre'];
+                            $token = encode($usuario);
+                            echo json_encode($token);
+                            // echo json_encode($valor['nombre']);
+                        }else{
+                            echo json_encode('Los datos no coinciden');
+                        }
+                    }
+                }else{
+                    $validar=1;
+                    echo json_encode($validar);
+                    exit();
+                }
+
+            }
+            
+            break;
+            
+            case 'menu':
+                try{
+                    $token =$_GET['token'];
+
+                    $usuari = decode($token); //No funciona( invalid signature, hay problema en el middleware)
+                    // echo json_encode($usuari);
+                    // exit();
+                    $daologin = new DAOlogin();
+                    $rdo = $daologin->select_usuario_nombre($usuari);
                 }catch (Exception $e){
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="'.$callback .'";</script>');
                 }
                 if(!$rdo){
-                    echo json_encode('No hay usuarios');
+                    echo json_encode('Error al encotrar la información del usuario');
                     exit();
                 }else{
-                    // $valor = get_object_vars($rdo);
-                    // echo json_encode($valor['contrasenya']);
-                    // exit();
-                    $valor = get_object_vars($rdo);
-                    if(password_verify($_POST['contrase'],$valor['contrasenya'])){
-                        $usuario=$valor['nombre'];
-                        $token = encode($usuario);
-                        echo json_encode($token);
-                        // echo json_encode($valor['nombre']);
-                    }else{
-                        echo json_encode('Los datos no coinciden');
+                    $arry=array();
+
+                    foreach ($rdo as $value) {
+                        array_push($arry, $value);
                     }
+
+                    echo json_encode($arry);
                 }
-            }
-            
-            break;
+                break;
 }

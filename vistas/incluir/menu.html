@@ -15,11 +15,14 @@
       </div>
 
       <nav class="nav-menu float-right d-none d-lg-block">
-        <ul>
-          <li><div class="home"><a href="index.php?page=homepage" data-tr="Homepage" ><span></span>Homepage</a></div></li>
-          <!-- controller_home&pr=Categ -->
+        <ul id="opc_menus">
+          <li>
+            <div class="home">
+              <a href="index.php?page=homepage" data-tr="Homepage" >Homepage</a>
+            </div>
+          </li>
           <li><a href="index.php?page=aboutus" data-tr="About Us">About Us</a></li>
-          <li><a href="index.php?page=opciones" data-tr="Clothing">Clothing</a></li>
+          <!-- <li><a href="index.php?page=opciones" data-tr="Clothing">Clothing</a></li> -->
           <li><a href="index.php?page=contactus" data-tr="Contact Us">Contact Us</a></li>
           <li class="drop-down"><a href="" data-tr="Languages">Languages</a>
             <ul>
@@ -28,8 +31,19 @@
 				<li><a id="opc_val" data-tr="Valencian">Valencian</a></li>
             </ul>
           </li>
-        <li><a><i class="fas fa-user-plus icono_login"></i></a></li>
-        <li><a><i class="fas fa-shopping-cart icono_login"></i></a></li>
+        <li class="drop-down">
+          <a>
+            <i class="fas fa-user-plus icono_login"></i>
+          </a>
+          <ul class='usuario'>
+            
+          </ul>
+        </li>
+        <li>
+          <a>
+            <i class="fas fa-shopping-cart icono_login"></i>
+          </a>
+        </li>
         </ul>
       </nav><!-- .nav-menu -->
 
