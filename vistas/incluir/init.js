@@ -1,8 +1,7 @@
 function cargar_menus(){
 var token1 = localStorage.getItem('token');
-var tojen =token1.split(" ");
-var token = tojen[1].replace(/['"]+/g, '');
-console.log(token);
+var token2 =token1.split(" ");
+var token = token2[1].replace(/['"]+/g, '');
 
 if (token != null || token!=0){
     $.ajax({
@@ -10,7 +9,13 @@ if (token != null || token!=0){
         dataType:'JSON',
         url:'modulo/login/controlador/controller_login.php?op=menu&token='+token,
         success:(function(data){
-            console.log(data);
+            console.log(data[2]);
+            if (data[2] == 'Cliente'){
+                // console.log('Entrado');
+                clienteMenu();
+            }else if (data[2] == 'Admin'){
+                adminMenu();
+            }
         })
     });
 }

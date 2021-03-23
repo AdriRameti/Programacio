@@ -39,7 +39,7 @@ class DAOlogin{
         return $res;
     }
     function select_usuario_nombre($nombre){
-        $sql = "SELECT nombre,avatar FROM usuario WHERE nombre LIKE '$nombre%' OR nombre='$nombre'";
+        $sql = "SELECT nombre,avatar,tipo FROM usuario WHERE nombre LIKE '$nombre%' OR nombre='$nombre'";
         // die ($sql);
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql)->fetch_object();
