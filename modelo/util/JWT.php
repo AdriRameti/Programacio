@@ -76,5 +76,4 @@ class JWT {
         return $this->base64url_encode(hash_hmac($this->hash, $this->data, $key, true));
     }
 }
-
 ?>

@@ -184,7 +184,6 @@ function login(){
                         $('<a>* No existe este usuario</a>').attr('id','error_usuario').attr('class','error_usuario validar').appendTo('.log15');
                     }else{
                         var token= respuesta;
-                        // console.log(token);
                     localStorage.setItem('token',token);
                     window.location.href='index.php?page=homepage';
                     
