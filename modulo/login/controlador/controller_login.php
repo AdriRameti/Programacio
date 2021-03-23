@@ -86,9 +86,6 @@ switch ($_GET['op']){
                         echo json_encode('No hay usuarios');
                         exit();
                     }else{
-                        // $valor = get_object_vars($rdo);
-                        // echo json_encode($valor['contrasenya']);
-                        // exit();
                         $valor = get_object_vars($rdo);
                         if(password_verify($_POST['contrase'],$valor['contrasenya'])){
                             $usuario=$valor['nombre'];
@@ -113,10 +110,10 @@ switch ($_GET['op']){
                 try{
                     $token =$_GET['token'];
                     $deToken = decodeT($token); //No funciona( invalid signature, hay problema en el middleware)
-                    // $usuari = substr($deToken,73,-7);
-                    $usuari = explode(":",$deToken);
-                    echo json_encode($usuari);
-                    exit();
+                    $usuari = substr($deToken,41);
+                    // echo json_encode($usuari);
+                    // die();
+                    // $usuari = explode(":",$deToken);
                     $daologin = new DAOlogin();
                     $rdo = $daologin->select_usuario_nombre($usuari);
                 }catch (Exception $e){

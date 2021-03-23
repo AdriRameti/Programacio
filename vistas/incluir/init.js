@@ -1,6 +1,9 @@
 function cargar_menus(){
-var token = localStorage.getItem('token');
+var token1 = localStorage.getItem('token');
+var tojen =token1.split(" ");
+var token = tojen[1].replace(/['"]+/g, '');
 console.log(token);
+
 if (token != null || token!=0){
     $.ajax({
         type:'GET',
@@ -8,7 +11,6 @@ if (token != null || token!=0){
         url:'modulo/login/controlador/controller_login.php?op=menu&token='+token,
         success:(function(data){
             console.log(data);
-            console.log(data[3]);
         })
     });
 }
