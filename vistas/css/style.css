@@ -25,6 +25,14 @@
 .icono_login:hover{
 	cursor: pointer;
 }
+.avatar{
+	height: 50px;
+	width: 50px;
+}
+.user,
+.user-out{
+	cursor: pointer;
+}
 /******************************************************************************/
 /*******************Login/Register*********************************************/
 .validar{
@@ -705,6 +713,7 @@ body {
 	  content: "\ea9d";
 	}
   }
+  
   
   /* Mobile Navigation */
   .mobile-nav {
