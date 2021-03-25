@@ -70,5 +70,29 @@ function countSearch($nom,$consulta){
     connect::close($conexion);
     return $res;
 }
-    }
+function valida_favorite($codigo){
+    $sql = "SELECT favorito FROM ropa where codigo=$codigo";
+    // die($sql);
+    $conexion = connect::con();
+    $res = mysqli_query($conexion, $sql)->fetch_object();
+    connect::close($conexion);
+    return $res;
+}
+function likeUp($codigo){
+    $sql = "UPDATE ropa SET favorito=1 WHERE codigo=$codigo";
+    // die($sql);
+    $conexion = connect::con();
+    $res = mysqli_query($conexion, $sql);
+    connect::close($conexion);
+    return $res;
+}
+function Unlike($codigo){
+    $sql = "UPDATE ropa SET favorito=0 WHERE codigo=$codigo";
+    // die($sql);
+    $conexion = connect::con();
+    $res = mysqli_query($conexion, $sql);
+    connect::close($conexion);
+    return $res;
+}
+}
     

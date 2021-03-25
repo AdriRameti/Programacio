@@ -183,4 +183,46 @@ switch ($_GET['op']){
                 exit;
                 }
             break;
+        case "favorite":
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop->valida_favorite($_GET['codArticulo']);
+            }catch (Exception $e){
+                echo json_encode("Error Favorite");
+                exit; 
+            }
+            if (!$rdo){
+                echo json_encode('Error en la validacion fav');
+            }else{
+                $valor = get_object_vars($rdo);
+                if($valor['favorito']==0){
+                    try{
+                        $daoshop = new DAOshop();
+                        $rdo = $daoshop->likeUp($_GET['codArticulo']);
+                    }catch (Exception $e){
+                        echo json_encode('Error up like');
+                    }
+                    if ($rdo==false){
+                        echo json_encode('Error error');
+                    }else if($rdo==true){
+                        $valLike = 1;
+                        echo json_encode($valLike);
+                    }
+                }else if($valor['favorito']==1){
+                    try{
+                        $daoshop = new DAOshop();
+                        $rdo = $daoshop->Unlike($_GET['codArticulo']);
+                    }catch (Exception $e){
+                        echo json_encode('Error up like');
+                    }
+                    if ($rdo==false){
+                        echo json_encode('Error error');
+                    }else if($rdo==true){
+                        $valLike = 2;
+                        echo json_encode($valLike);
+                    }
+                }
+
+            }
+            break;
 }

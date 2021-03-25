@@ -40,16 +40,19 @@ function cat_shop(correcto,consulta){
         },
     success:(function(data){
         $('#Div3').empty();
+         
             x=0;
         for (row in data){
+            var codigo= data[row].codigo;
             //CONTENIDO
-            // console.log(data);
             $('<span></span>').attr('class','items sup'+x).appendTo('#Div3');
             $('<span></span>').attr('class','item-contenido suport'+x).appendTo('.sup'+x);
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
             $('<img></img>').attr('id',''+data[row].codigo+'').attr('class','details defin'+x).attr('src',''+data[row].img+'').attr('alt','').appendTo('.link'+x);
             $('<div>'+data[row].nombre+'</div>').attr('value',''+data[row].nombre+'').attr('class','preu'+x).appendTo('.sup'+x);
+            $('<i></i>').attr('class','clico fas fa-heart cora').attr('id',''+codigo+'').appendTo('.preu'+x)
             $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
+            $('<p></p>').appendTo('#Div3');
                 x++;
         }
         pagination(filtrado1);
@@ -58,6 +61,37 @@ function cat_shop(correcto,consulta){
     sessionStorage.clear();
    
 }
+function click_heart(){
+    $(document).on('click','.clico',function(){
+        console.log('hago click');
+        if (localStorage.getItem('token')===null){
+            window.location.href="index.php?page=login"
+        }else{
+            var idHeart = this.getAttribute('id'); 
+            // alert(idHeart);
+            favoritos(idHeart);
+        }
+    });
+}
+function favoritos(codArticulo){
+    if(localStorage.getItem('token')!=null){
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url:'modulo/shop/controlador/controller_shop.php?op=favorite&codArticulo='+codArticulo,
+            success:(function(data){
+                if (data==1){
+                    $('.fas.fa-heart').removeClass('cora').addClass('cora-sty');
+                }else if(data==2){
+                    $('.fas.fa-heart').removeClass('cora-sty').addClass('cora');
+
+                }
+            })
+        });
+    }
+    
+}
+
 function pagination(correcto,consulta,filtrado1){
     var nom=localStorage.getItem('nombre');
     var marcas=sessionStorage.getItem('marcas');
@@ -428,7 +462,7 @@ function load_divs(){
     cat_shop();
     details();
     remove_filters();
-    pagination();
+    
     // api();
 }
 
@@ -437,7 +471,7 @@ load_divs();
 efectos_shop();
 buscar();
 rediLogin();
-
+click_heart();
 });
 /////////DEBUG ERROR AJAX//////////////
     // $.ajax({
