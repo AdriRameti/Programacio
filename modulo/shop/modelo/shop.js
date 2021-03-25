@@ -50,7 +50,7 @@ function cat_shop(correcto,consulta){
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
             $('<img></img>').attr('id',''+data[row].codigo+'').attr('class','details defin'+x).attr('src',''+data[row].img+'').attr('alt','').appendTo('.link'+x);
             $('<div>'+data[row].nombre+'</div>').attr('value',''+data[row].nombre+'').attr('class','preu'+x).appendTo('.sup'+x);
-            $('<i></i>').attr('class','clico fas fa-heart cora repet'+x).attr('id',''+codigo+'').attr('name','pinto'+x).appendTo('.preu'+x)
+            $('<i></i>').attr('class','clico fas fa-heart repet'+x+' cora').attr('id',''+codigo+'').appendTo('.preu'+x)
             $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
             $('<p></p>').appendTo('#Div3');
                 x++;
@@ -63,30 +63,30 @@ function cat_shop(correcto,consulta){
 }
 function click_heart(){
     $(document).on('click','.clico',function(){
-        console.log('hago click');
         if (localStorage.getItem('token')===null){
             window.location.href="index.php?page=login"
         }else{
             var idHeart = this.getAttribute('id'); 
             var clases =this.getAttribute('class');
-            var print = clases.split(" ");
-            var result = print[4];
-            favoritos(idHeart,result);
+            // var print = clases.split(" ");
+            // var result = print[4];
+            favoritos(idHeart,clases);
         }
     });
 }
 function favoritos(codArticulo,pintar){
-    console.log(pintar);
     if(localStorage.getItem('token')!=null){
         $.ajax({
             type: 'GET',
             dataType: 'JSON',
             url:'modulo/shop/controlador/controller_shop.php?op=favorite&codArticulo='+codArticulo,
             success:(function(data){
+                var print = pintar.split(" ");
+                var result= print[3];
                 if (data==1){
-                    $('.'+pintar+'').removeClass('cora').addClass('cora-sty');
+                    $('.'+result+'').removeClass('cora').addClass('cora-sty');
                 }else if(data==2){
-                    $('.'+pintar+'').removeClass('cora-sty').addClass('cora');
+                    $('.'+result+'').removeClass('cora-sty').addClass('cora');
 
                 }
             })
