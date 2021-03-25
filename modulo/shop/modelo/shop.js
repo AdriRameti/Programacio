@@ -50,7 +50,7 @@ function cat_shop(correcto,consulta){
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
             $('<img></img>').attr('id',''+data[row].codigo+'').attr('class','details defin'+x).attr('src',''+data[row].img+'').attr('alt','').appendTo('.link'+x);
             $('<div>'+data[row].nombre+'</div>').attr('value',''+data[row].nombre+'').attr('class','preu'+x).appendTo('.sup'+x);
-            $('<i></i>').attr('class','clico fas fa-heart cora').attr('id',''+codigo+'').appendTo('.preu'+x)
+            $('<i></i>').attr('class','clico fas fa-heart cora repet'+x).attr('id',''+codigo+'').attr('name','pinto'+x).appendTo('.preu'+x)
             $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
             $('<p></p>').appendTo('#Div3');
                 x++;
@@ -68,12 +68,15 @@ function click_heart(){
             window.location.href="index.php?page=login"
         }else{
             var idHeart = this.getAttribute('id'); 
-            // alert(idHeart);
-            favoritos(idHeart);
+            var clases =this.getAttribute('class');
+            var print = clases.split(" ");
+            var result = print[4];
+            favoritos(idHeart,result);
         }
     });
 }
-function favoritos(codArticulo){
+function favoritos(codArticulo,pintar){
+    console.log(pintar);
     if(localStorage.getItem('token')!=null){
         $.ajax({
             type: 'GET',
@@ -81,9 +84,9 @@ function favoritos(codArticulo){
             url:'modulo/shop/controlador/controller_shop.php?op=favorite&codArticulo='+codArticulo,
             success:(function(data){
                 if (data==1){
-                    $('.fas.fa-heart').removeClass('cora').addClass('cora-sty');
+                    $('.'+pintar+'').removeClass('cora').addClass('cora-sty');
                 }else if(data==2){
-                    $('.fas.fa-heart').removeClass('cora-sty').addClass('cora');
+                    $('.'+pintar+'').removeClass('cora-sty').addClass('cora');
 
                 }
             })
