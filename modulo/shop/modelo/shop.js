@@ -61,6 +61,10 @@ function cat_shop(correcto,consulta){
     sessionStorage.clear();
    
 }
+function show_like(){
+    var usuario = localStorage.getItem('nomUser');
+    
+}
 function click_heart(){
     $(document).on('click','.clico',function(){
         if (localStorage.getItem('token')===null){
