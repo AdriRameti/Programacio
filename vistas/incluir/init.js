@@ -1,16 +1,20 @@
 function cargar_menus(){
 var token1 = localStorage.getItem('token');
+// var token2 =token1.split(" ");
+// var token = token2[1].replace(/['"]+/g, '');
 if(token1 != null){
     var token2 =token1.split(" ");
     var token = token2[0].replace(/['"]+/g, '');
-
     $.ajax({
         type:'GET',
         dataType:'JSON',
         url:'modulo/login/controlador/controller_login.php?op=menu&token='+token,
         success:(function(data){
+            console.log(data[0]);
+            var nomUser= localStorage.setItem('nomUser',data[0]);
             switch (data[2]){
                case 'Cliente':
+                   console.log('entra');
                 clienteMenu(data[0],data[1]);
                    break;
                 case 'Admin':
@@ -24,7 +28,7 @@ if(token1 != null){
             log_out();
         })
     });
-}else if(token1==null){
+}else if(token==null){
     menu_global();
 }
 }
@@ -99,7 +103,7 @@ function clienteMenu(nombre,avatar){
     $('<a>Contact Us</a>').attr('href','index.php?page=contactus').attr('data-tr','Contact Us').appendTo('.contact');
 
     $('<li></li>').attr('class','drop-down idiom').appendTo('#opc_menus');
-    $('<a>Languages Us</a>').attr('href','').attr('data-tr','Languages').appendTo('.idiom');
+    $('<a>Languages</a>').attr('href','').attr('data-tr','Languages').appendTo('.idiom');
     $('<ul></ul>').attr('class','idiom2').appendTo('.idiom');
     $('<li></li>').attr('class','idiom3').appendTo('.idiom2');
     $('<a>Spanish</a>').attr('id','opc_es').attr('data-tr','Spanish').appendTo('.idiom3');

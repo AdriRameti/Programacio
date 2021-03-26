@@ -185,7 +185,9 @@ switch ($_GET['op']){
             break;
         case "favorite":
             try{
+
                 $daoshop = new DAOshop();
+                $rdo1 = $daoshop->insert_fav($_GET['codArticulo'],$_GET['nomUser']);
                 $rdo = $daoshop->valida_favorite($_GET['codArticulo']);
             }catch (Exception $e){
                 echo json_encode("Error Favorite");
@@ -211,6 +213,7 @@ switch ($_GET['op']){
                 }else if($valor['favorito']==1){
                     try{
                         $daoshop = new DAOshop();
+                        $rdo1= $daoshop->delete_fav($_GET['codArticulo']);
                         $rdo = $daoshop->Unlike($_GET['codArticulo']);
                     }catch (Exception $e){
                         echo json_encode('Error up like');

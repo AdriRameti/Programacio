@@ -61,6 +61,10 @@ function cat_shop(correcto,consulta){
     sessionStorage.clear();
    
 }
+function show_like(){
+    var usuario = localStorage.getItem('nomUser');
+    
+}
 function click_heart(){
     $(document).on('click','.clico',function(){
         if (localStorage.getItem('token')===null){
@@ -73,11 +77,12 @@ function click_heart(){
     });
 }
 function favoritos(codArticulo,pintar){
+    var nomUsuario = localStorage.getItem('nomUser');
     if(localStorage.getItem('token')!=null){
         $.ajax({
             type: 'GET',
             dataType: 'JSON',
-            url:'modulo/shop/controlador/controller_shop.php?op=favorite&codArticulo='+codArticulo,
+            url:'modulo/shop/controlador/controller_shop.php?op=favorite&codArticulo='+codArticulo+'&nomUser='+nomUsuario,
             success:(function(data){
                 var print = pintar.split(" ");
                 var result= print[3];
