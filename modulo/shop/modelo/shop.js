@@ -68,8 +68,6 @@ function click_heart(){
         }else{
             var idHeart = this.getAttribute('id'); 
             var clases =this.getAttribute('class');
-            // var print = clases.split(" ");
-            // var result = print[4];
             favoritos(idHeart,clases);
         }
     });
