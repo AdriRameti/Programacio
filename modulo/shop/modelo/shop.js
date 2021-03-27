@@ -69,11 +69,19 @@ function show_like(){
             dataType: 'JSON',
             url:'modulo/shop/controlador/controller_shop.php?op=showLikes&usuario='+usuario,
             success:(function(data){
+                console.log(data.length);
+                if (data.length == 1){
+                    if (data[0].favorito==1){
+                        $('.'+data[0].codArticulo+'').removeClass('cora').addClass('cora-sty');
+                    } 
+                }else{
                     for (row in data){
                         if (data[row].favorito==1){
                             $('.'+data[row].codArticulo+'').removeClass('cora').addClass('cora-sty');
                         } 
                     }
+                }
+
                 
             })
         });

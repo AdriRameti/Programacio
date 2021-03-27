@@ -1,5 +1,5 @@
 <?php
-	if ((isset($_GET['page'])) && ($_GET['page']===("controller_clothes")||("controller_sneakers")||("controller_home")||("controller_shop")||("list_shop")) ){
+	if ((isset($_GET['page'])) && ($_GET['page']===("controller_clothes")||("controller_sneakers")||("controller_home")||("controller_shop")||("list_shop") ||("contactus")) ){
 		include("vistas/incluir/top_pages_clothes.html");
 	}else{
 		include("vistas/incluir/top_pages.html");

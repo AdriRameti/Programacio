@@ -178,12 +178,14 @@ function login(){
                 url:'modulo/login/controlador/controller_login.php?op=login',
                 
                 success:(function(respuesta){
-                    // console.log(respuesta);
                     if (respuesta==1){
                         $('<span></span>').attr('class','log15').appendTo('.log3');
                         $('<a>* No existe este usuario</a>').attr('id','error_usuario').attr('class','error_usuario validar').appendTo('.log15');
+                    }else if (respuesta=='"Los datos no coinciden"'){
+                        window.location.href='index.php?page=login';
                     }else{
                         var token= respuesta;
+                    
                     localStorage.setItem('token',token);
                     window.location.href='index.php?page=homepage';
                     
