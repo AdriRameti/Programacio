@@ -111,5 +111,13 @@ function delete_fav($codigo){
     connect::close($conexion);
     return $res;
 }
+function showLike($user){
+    $sql = "SELECT * FROM favoritos where nomUser='$user'";
+    // die($sql);
+    $conexion = connect::con();
+    $res = mysqli_query($conexion, $sql);
+    connect::close($conexion);
+    return $res;
+}
 }
     

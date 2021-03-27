@@ -10,11 +10,10 @@ if(token1 != null){
         dataType:'JSON',
         url:'modulo/login/controlador/controller_login.php?op=menu&token='+token,
         success:(function(data){
-            console.log(data[0]);
             var nomUser= localStorage.setItem('nomUser',data[0]);
             switch (data[2]){
                case 'Cliente':
-                   console.log('entra');
+
                 clienteMenu(data[0],data[1]);
                    break;
                 case 'Admin':
@@ -24,7 +23,6 @@ if(token1 != null){
                     menu_global();
                     break;
             }
-            console.log(data);
             log_out();
         })
     });
@@ -34,7 +32,6 @@ if(token1 != null){
 }
 function log_out(){
     $(document).on('click','.user-out',function(){
-        console.log('hago_click');
         localStorage.removeItem('token');
         window.location.href="index.php?page=homepage";
     })

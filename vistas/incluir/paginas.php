@@ -45,7 +45,7 @@ if (isset($_GET['page'])){
 			break;
 		}
 	}else{
-		include("vistas/incluir/inicio.html");
+		include("modulo/home/vista/homepage.html");
 	}
 
 

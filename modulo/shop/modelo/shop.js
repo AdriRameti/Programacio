@@ -50,11 +50,12 @@ function cat_shop(correcto,consulta){
             $('<a></a>').attr('class','link'+x).appendTo('.suport'+x);
             $('<img></img>').attr('id',''+data[row].codigo+'').attr('class','details defin'+x).attr('src',''+data[row].img+'').attr('alt','').appendTo('.link'+x);
             $('<div>'+data[row].nombre+'</div>').attr('value',''+data[row].nombre+'').attr('class','preu'+x).appendTo('.sup'+x);
-            $('<i></i>').attr('class','clico fas fa-heart repet'+x+' cora').attr('id',''+codigo+'').appendTo('.preu'+x)
+            $('<i></i>').attr('class','clico fas fa-heart '+codigo+' repet'+x+' cora').attr('id',''+codigo+'').appendTo('.preu'+x)
             $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
             $('<p></p>').appendTo('#Div3');
                 x++;
         }
+       
         pagination(filtrado1);
     })
     });
@@ -63,6 +64,22 @@ function cat_shop(correcto,consulta){
 }
 function show_like(){
     var usuario = localStorage.getItem('nomUser');
+    if(usuario != null){
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url:'modulo/shop/controlador/controller_shop.php?op=showLikes&usuario='+usuario,
+            success:(function(data){
+                    for (row in data){
+                        if (data[row].favorito==1){
+                            $('.'+data[row].codArticulo+'').removeClass('cora').addClass('cora-sty');
+                        } 
+                    }
+                
+            })
+        });
+    }
+
     
 }
 function click_heart(){
@@ -85,7 +102,7 @@ function favoritos(codArticulo,pintar){
             url:'modulo/shop/controlador/controller_shop.php?op=favorite&codArticulo='+codArticulo+'&nomUser='+nomUsuario,
             success:(function(data){
                 var print = pintar.split(" ");
-                var result= print[3];
+                var result= print[4];
                 if (data==1){
                     $('.'+result+'').removeClass('cora').addClass('cora-sty');
                 }else if(data==2){
@@ -478,6 +495,7 @@ efectos_shop();
 buscar();
 rediLogin();
 click_heart();
+show_like();
 });
 /////////DEBUG ERROR AJAX//////////////
     // $.ajax({

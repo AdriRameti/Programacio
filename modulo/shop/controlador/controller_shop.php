@@ -228,4 +228,23 @@ switch ($_GET['op']){
 
             }
             break;
+        case 'showLikes':
+            $user = $_GET['usuario'];
+            try{
+                $daoshop = new DAOshop();
+                $rdo = $daoshop-> showLike($user);
+            }catch (exception $e){
+                echo json_encode('Error showLikes'); 
+            }
+            if(!$rdo){
+                echo json_encode('No se encontraron elementos favoritos');
+            }else{
+                $arry=array();
+                foreach ($rdo as $value) {
+                    array_push($arry, $value);
+                }
+                echo json_encode($arry);
+            }
+            
+            break;
 }
