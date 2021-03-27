@@ -17,7 +17,6 @@ function cat_shop(correcto,consulta){
     var filtrado1 =sessionStorage.getItem('filtrado');
     var marcas=sessionStorage.getItem('marcas');
     var tallas=sessionStorage.getItem('tallas');
-    // console.log(filtrado1);
     if(correcto==1 && (confirmar==1)){
         var url="/Ejercicios_PHP/modulo/shop/controlador/controller_shop.php?op=search&consulta="+consulta+"&nom="+nom+"&offset="+offset;
     }else if(correcto!=1){
@@ -235,10 +234,8 @@ function validaFilters(){
         if(marca=="" && talla==""){
             filtrado=0;
         }
-        console.log('esto es filtrado en filters '+filtrado);
         // localStorage.setItem('filtrado1',filtrado);
         $('body').on('click','#aplicar',function(){
-            console.log("Hago clcik");
             sessionStorage.setItem('filtrado',filtrado);
             sessionStorage.setItem('marcas',marca);
             sessionStorage.setItem('tallas',talla);
@@ -278,7 +275,6 @@ var codigo = this.getAttribute('id');
                     console.log("views updated");
                 })
             });
-            console.log(data);
             $('#Div3').empty();
             $('.Head').empty();
             $('#pagiShop').empty();
@@ -435,7 +431,6 @@ var codigo = this.getAttribute('id');
                 type:'GET',
                 dataType: 'JSON',
                 success: function(data) {
-                      console.log(data.items[0]);
                       x=0;
                     for (i=0; i <3;i++){
                         $('<div></div>').attr('class','col-lg-4 col-md-6 filter-clothes home1'+x).appendTo('.infoApi');
@@ -458,7 +453,6 @@ function buscar(){
     $(document).on('keyup','#busqueda',function(){
         var valor=$(this).val();
         if(valor!=""){
-            console.log(valor);
             var correcto=1;
             // buscar(correcto,valor);
             cat_shop(correcto,valor);
@@ -466,7 +460,6 @@ function buscar(){
         }else{
             correcto=0;
             cat_shop(correcto);
-            console.log("No escribi");
         }
     });
 }
