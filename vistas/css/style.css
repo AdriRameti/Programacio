@@ -21,8 +21,17 @@
 	position: absolute;
 	top: 15px;
 }
-
-.icono_login:hover{
+.icono_cart{
+	color: white;
+	position: absolute;
+	top: 15px;
+	left:20px;
+}
+.icono_login:hover,
+.icono_cart:hover{
+	cursor: pointer;
+}
+.cesta:hover{
 	cursor: pointer;
 }
 .avatar{
@@ -660,6 +669,7 @@ body {
 	padding: 10px 0;
 	background: #fff;
 	box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+	border-radius: 5%;
 	transition: ease all 0.3s;
   }
   
@@ -670,7 +680,7 @@ body {
   }
   
   .nav-menu .drop-down li {
-	min-width: 110px;
+	min-width: 90px;
 	position: relative;
   }
   

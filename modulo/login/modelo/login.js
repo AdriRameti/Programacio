@@ -139,10 +139,8 @@ function show_registers(){
 }
 function register(){
     $(document).on('click','#btn_register',function(e){
-        console.log('entro register');
         e.preventDefault();
         if (validate_register() !=0){
-            console.log('Entro register sin fallos');
             var data = $('#formulario_register').serialize(); 
             $.ajax({
                 type:'POST',

@@ -10,7 +10,6 @@ var token1 = localStorage.getItem('token');
         dataType:'JSON',
         url:'modulo/login/controlador/controller_login.php?op=menu&token='+token,
         success:(function(data){
-            console.log(data);
             localStorage.setItem('nomUser',data[0]);
             switch (data[2]){
                case 'Cliente':
@@ -83,7 +82,7 @@ function adminMenu(nombre,avatar){
 
     $('<li></li>').attr('class','drop-down iconoCart').appendTo('#opc_menus');
     $('<a></a>').attr('class','iconoCart1').appendTo('.iconoCart');
-    $('<i></i>').attr('class','fas fa-shopping-cart icono_login').appendTo('.iconoCart1');
+    $('<i></i>').attr('class','fas fa-shopping-cart icono_cart').appendTo('.iconoCart1');
 
 }
 function clienteMenu(nombre,avatar){
@@ -127,7 +126,11 @@ function clienteMenu(nombre,avatar){
 
     $('<li></li>').attr('class','drop-down iconoCart').appendTo('#opc_menus');
     $('<a></a>').attr('class','iconoCart1').appendTo('.iconoCart');
-    $('<i></i>').attr('class','fas fa-shopping-cart icono_login').appendTo('.iconoCart1');
+    $('<i></i>').attr('class','fas fa-shopping-cart icono_cart').appendTo('.iconoCart1');
+    $('<ul></ul>').attr('class','iconoCart2').appendTo('.iconoCart');
+    $('<li></li>').attr('class','iconoCart3').appendTo('.iconoCart2');
+    $('<a>Consulta tu cesta (0)</a>').attr('class','cesta').appendTo('.iconoCart3');
+
 }
 function menu_global(){
     $('<li></li>').attr('class','homeMen').appendTo('#opc_menus');
@@ -159,7 +162,7 @@ function menu_global(){
 
     $('<li></li>').attr('class','drop-down iconoCart').appendTo('#opc_menus');
     $('<a></a>').attr('class','iconoCart1').appendTo('.iconoCart');
-    $('<i></i>').attr('class','fas fa-shopping-cart icono_login').appendTo('.iconoCart1');
+    $('<i></i>').attr('class','fas fa-shopping-cart icono_cart').appendTo('.iconoCart1');
 }
 function load_funciones(){
     cargar_menus();
