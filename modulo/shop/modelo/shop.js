@@ -51,6 +51,7 @@ function cat_shop(correcto,consulta){
             $('<div>'+data[row].nombre+'</div>').attr('value',''+data[row].nombre+'').attr('class','preu'+x).appendTo('.sup'+x);
             $('<i></i>').attr('class','clico fas fa-heart '+codigo+' repet'+x+' cora').attr('id',''+codigo+'').appendTo('.preu'+x)
             $('<div>'+data[row].precio+'</div>').attr('class','precio'+x).appendTo('.sup'+x);
+            $('<i></i>').attr('class','cart fas fa-cart-plus carrito repet1'+x+'').attr('id',''+codigo+'').appendTo('.precio'+x);
             $('<p></p>').appendTo('#Div3');
                 x++;
         }
