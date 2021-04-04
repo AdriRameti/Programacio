@@ -43,7 +43,7 @@ switch ($_GET['op']){
             }
     
             if(!$rdo){
-                echo json_encode('Error en la busqueda');
+                echo json_encode('Error al introducir');
                 exit;
             }else{
                 echo json_encode('Item introducido correctamente');
