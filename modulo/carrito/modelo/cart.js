@@ -42,7 +42,7 @@ function show_cart(){
                     $('<a>Total</a>').appendTo('#total');
 
                     $('<div></div>').attr('class','table_preu').attr('id','preu').appendTo('#contenedor');
-                    $('<a>'+total+'€</a>').appendTo('#preu');
+                    $('<a>'+total+'€</a>').attr('id','preu2').appendTo('#preu');
                 })
             });
         }
@@ -65,6 +65,7 @@ function update_cantity(){
                 console.log(data);
             })
         });
+        location.reload();
     });
     $(document).on('click','.cantity2' ,function(){
         var codProd = this.getAttribute('id');
@@ -73,25 +74,26 @@ function update_cantity(){
             dataType: 'JSON',
             url:'modulo/carrito/controlador/controller_cart.php?op=less_cantity&codProd='+codProd,
             success:(function(data){
-                console.log(data);
+                // alert(data);
                 if (data==0){
                     $.ajax({
                         type: 'GET',
                         dataType: 'JSON',
                         url:'modulo/carrito/controlador/controller_cart.php?op=sup_item&codProd='+codProd,
                         success:(function(data){
-                            console.log(data);
+                            console.log(data);                  
+                            location.reload();
                         })
                     });
                 }
             })
         });
+        location.reload();
     });
 }
 
 function click_items_cart(){
     $(document).on('click','.cart',function(){
-        alert('hago click');
         if (localStorage.getItem('token')===null){
             window.location.href="index.php?page=login"
         }else{
