@@ -118,4 +118,20 @@ switch ($_GET['op']){
                 exit;
             }  
         break;
+        case 'delete_cart':
+            try{
+                $daocart = new DAOcart();
+                 $rdo = $daocart ->delete_cart();
+            }catch(Exception $e){
+                echo json_encode('Error validar');
+                exit;
+            }
+            if(!$rdo){
+                echo json_encode('Error al realizar la eliminación');
+                exit;
+            }else{
+                echo json_encode('Carrito eliminado correctamente');
+                exit;
+            }  
+            break;
 }

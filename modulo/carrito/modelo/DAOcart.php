@@ -52,4 +52,11 @@ function sup_item($codProd){
     connect::close($conexion);
     return $res;
 }
+function delete_cart(){
+    $sql="DELETE FROM liniafact";
+    $conexion = connect::con();
+    $res = mysqli_query($conexion,$sql);
+    connect::close($conexion);
+    return $res;
+}
 }

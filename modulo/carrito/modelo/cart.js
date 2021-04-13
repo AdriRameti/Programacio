@@ -43,10 +43,33 @@ function show_cart(){
 
                     $('<div></div>').attr('class','table_preu').attr('id','preu').appendTo('#contenedor');
                     $('<a>'+total+'€</a>').attr('id','preu2').appendTo('#preu');
+                    $('<a>Seguir Comprando</a>').attr('class','btn-cart botones').attr('id','go').appendTo('#button-cart');
+                    $('<a>Finalizar compra</a>').attr('class','btn-cart botones').attr('id','ext').appendTo('#button-cart');
                 })
             });
         }
 
+}
+function finishcart(){
+    console.log('entro');
+    $(document).on('click','#go',function(){
+        window.location.href="index.php?page=list_shop";
+    });
+    $(document).on('click','#ext',function(){
+       if (localStorage.getItem('token')){
+           $.ajax({
+            type:'GET',
+            dataType:'JSON',
+            url:'modulo/carrito/controlador/controller_cart.php?op=delete_cart',
+            success:(function(data){
+                console.log(data);
+                window.location.href="index.php?homepage";
+            })
+           });
+       }else{
+           window.location.href="index.php?page=login";
+       }
+    });
 }
 function rediCart(){
     $(document).on('click','.cesta',function(){
@@ -115,8 +138,10 @@ function insert_items(usuario,codArticulo){
 }
 function load_div(){
     $('<div></div>').attr('class','container-table').attr('id','contenedor').appendTo('#table_cart');
+    $('<div></div>').attr('class','button-cart').attr('id','button-cart').appendTo('#table_cart');
     show_cart();
     update_cantity();
+    finishcart();
 }
 $(document).ready(function(){
 load_div();
