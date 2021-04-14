@@ -136,15 +136,17 @@ function insert_items(usuario,codArticulo){
         })
     });
 }
-function load_div(){
-    $('<div></div>').attr('class','container-table').attr('id','contenedor').appendTo('#table_cart');
-    $('<div></div>').attr('class','button-cart').attr('id','button-cart').appendTo('#table_cart');
-    show_cart();
-    update_cantity();
-    finishcart();
+function load_contenido(){
+        $('<div></div>').attr('class','container-table').attr('id','contenedor').appendTo('#table_cart');
+        $('<div></div>').attr('class','button-cart').attr('id','button-cart').appendTo('#table_cart');
+        show_cart();
+        update_cantity();
+        finishcart();
+
 }
-$(document).ready(function(){
-load_div();
-click_items_cart();
-rediCart();
+
+window.addEventListener('load', function(){
+    load_contenido();
+    click_items_cart();
+    // rediCart();
 });

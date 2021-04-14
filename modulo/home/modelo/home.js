@@ -141,6 +141,12 @@ function buscar2(){
     return false;
     });
     }
+  function rediCart(){
+      $(document).on('click','.cesta',function(){
+          window.location.href='index.php?page=list_cart';
+          return false;
+      });
+  }
   function cargar_divs(){
   $('<div></div>').attr('id','Div1').attr('class','row portfolio-container').attr('data-aos','fade-up').attr('data-aos-easing','ease-in-out').attr('data-aos-duration','500').appendTo('#categories');
   // var localizacion = 'index.php?page=homepage';
@@ -153,4 +159,5 @@ function buscar2(){
   rediShop();
   rediLogin();
   buscar2();
+  rediCart();
   });

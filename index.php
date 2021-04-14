@@ -1,10 +1,13 @@
 <?php
 	if ((isset($_GET['page'])) && ($_GET['page']===("controller_clothes")||
-	$_GET['page']===("controller_sneakers")||$_GET['page']===("controller_home")||
+	$_GET['page']===("controller_sneakers")||
+	$_GET['page']===("controller_home")||
 	$_GET['page']===("controller_shop")||
 	$_GET['page']===("list_shop") ||
-	$_GET['page']===("contactus") || $_GET['page']===("homepage")
-	|| $_GET['page']===('list_cart'))){
+	$_GET['page']===("contactus") || 
+	$_GET['page']===("homepage")|| 
+	$_GET['page']===('list_cart') || 
+	$_GET['page']===('login') )){
 		include("vistas/incluir/top_pages_clothes.html");
 	}else{
 		include("vistas/incluir/top_pages.html");

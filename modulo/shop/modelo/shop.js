@@ -498,6 +498,8 @@ buscar();
 rediLogin();
 click_heart();
 show_like();
+load_contenido();
+click_items_cart();
 });
 /////////DEBUG ERROR AJAX//////////////
     // $.ajax({

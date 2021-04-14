@@ -57,6 +57,7 @@ if(document.formulario_register.contrase.value.length==0){
 }
 
 function login_view(){
+    
     $.ajax({
         url:"/Ejercicios_PHP/modulo/login/controlador/controller_login.php?op=showLogin",
         type:'GET',
@@ -194,14 +195,13 @@ function login(){
         
     });
 }
-function load_div(){
-    
+function load_content(){
     $('<div></div>').attr('id','login_views1').appendTo('#login_views');
     login_view();
-  
 }
+
 $(document).ready(function(){
-load_div();
+load_content();
 login();
 register();
 });
